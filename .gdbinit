@@ -1,5 +1,5 @@
 set debuginfod enabled on
-source /home/daniele/.config/pwndbg/gdbinit.py
+source /usr/share/pwndbg/gdbinit.py
 source /home/daniele/.config/splitmind/gdbinit.py 
 python
 import splitmind
