@@ -1,2 +1,2 @@
 -- Disable copilot by default
-vim.cmd(":Copilot disable")
+vim.g.copilot_enabled = false
