@@ -31,7 +31,7 @@ return require('packer').startup(function(use)
 			  properties = {},
 			  types = {},
 		  },
-		  
+
 		  --[[color_overrides = {
 			  mocha = {
 				  base = "#000000",
@@ -40,6 +40,8 @@ return require('packer').startup(function(use)
 			  },
 		  } ]]--
 	  })
+
+		-- set the colorscheme
 	  vim.cmd('colorscheme catppuccin')
 
   end
@@ -53,7 +55,7 @@ return require('packer').startup(function(use)
   use("ThePrimeagen/harpoon")
 
   use("mbbill/undotree")
-  
+
   use("tpope/vim-fugitive")
 
   use {
@@ -82,8 +84,4 @@ return require('packer').startup(function(use)
 
   -- Per project custom lsp config
   use("folke/neoconf.nvim")
-
-  use("google/vim-maktaba")
-  use("google/vim-codefmt")
-  use("google/vim-glaive")
 end)
