@@ -15,4 +15,4 @@ linkParser (Link attr txt (url, title)) = Link attr txt (newUrl, title)
 linkParser x              = x
 
 isValidURL :: String -> Bool
-isValidURL url = url =~ ("^((https?|ftp)://)*[a-zA-Z0-9]+(\\.[a-zA-Z0-9]+)+([/?].*)?$" :: String)
+isValidURL url = url =~ ("(^(https?|ftp)://[a-zA-Z0-9]+(\\.[a-zA-Z0-9]+)+([/?].*)?$)|^(#)" :: String)
