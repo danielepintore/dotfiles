@@ -93,8 +93,10 @@ return require('packer').startup(function(use)
 			vim.g.vimwiki_list = {
 				{
 					path = '~/Documents/cybersecurity/wiki/',
+					path_html = '~/Documents/cybersecurity/wiki/generated_html',
 					syntax = 'markdown',
 					ext = '.md',
+					custom_wiki2html = '~/.config/vimwiki/parse_wiki.py',
 				},
 			}
 		end,
