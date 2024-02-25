@@ -94,6 +94,9 @@ return require('packer').startup(function(use)
 				{
 					path = '~/Documents/cybersecurity/wiki/',
 					path_html = '~/Documents/cybersecurity/wiki/generated_html',
+					template_path = '~/.config/vimwiki/templates/cybersecurity/',
+					template_default = 'default',
+					template_ext = 'html',
 					syntax = 'markdown',
 					ext = '.md',
 					custom_wiki2html = '~/.config/vimwiki/parse_wiki.py',
