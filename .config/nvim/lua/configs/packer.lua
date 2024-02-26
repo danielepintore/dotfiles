@@ -93,7 +93,7 @@ return require('packer').startup(function(use)
 			vim.g.vimwiki_list = {
 				{
 					path = '~/Documents/cybersecurity/wiki/',
-					path_html = '~/Documents/cybersecurity/wiki/generated_html',
+					path_html = '~/Documents/cybersecurity/wiki/dist',
 					template_path = '~/.config/vimwiki/templates/cybersecurity/',
 					template_default = 'default',
 					template_ext = 'html',
