@@ -47,6 +47,7 @@ def convert(
     command = [
         "pandoc",
         "--filter={}/.config/vimwiki/linkParser.hs".format(os.environ['HOME']),
+        "--filter={}/.config/vimwiki/checkBoxParser.hs".format(os.environ['HOME']),
         "--section-divs",
         "--template={}".format(template) if path.isfile(template) else "",
         #"--variable=css={}".format(css_file) if path.isfile(css_file) else "",

@@ -97,6 +97,7 @@ return require('packer').startup(function(use)
 					template_path = '~/.config/vimwiki/templates/cybersecurity/',
 					template_default = 'default',
 					template_ext = 'html',
+					css_name = 'css/styles.css',
 					syntax = 'markdown',
 					ext = '.md',
 					custom_wiki2html = '~/.config/vimwiki/parse_wiki.py',

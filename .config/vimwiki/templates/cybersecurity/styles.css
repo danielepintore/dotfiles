@@ -1,5 +1,7 @@
 img {
 	border-radius: .5rem;
+	margin: auto;
+	display: block;
 }
 
 code {
@@ -37,7 +39,7 @@ table {
 	width: auto;
 }
 th {
-  background-color: #269b20;
+  background-color: #00b34e;
   color: #FFFFFF;
 }
 th, td {
@@ -74,10 +76,6 @@ tr:last-child td:last-child {
   a,
   a:visited {
     text-decoration: underline;
-  }
-
-  a[href]:after {
-    content: " (" attr(href) ")";
   }
 
   abbr[title]:after {
@@ -248,8 +246,30 @@ pre {
 }
 
 blockquote {
-  border-left: 3px solid #01ff70;
+	background-color: #333;
+	border-radius: 0 .5rem .5rem 0;
+  border-left: .3rem solid #01ff70;
   padding-left: 1rem;
+}
+
+input[type='checkbox'] {
+	color: red;
+	pointer-events: none;
+}
+
+/* Remove marker from bullet list */
+.task-list li::marker {
+  content: '';
+	color: #0f0f0f;
+  font-size: 1.2em;
+}
+
+.task-list ul {
+	margin-left: -1rem;
+}
+
+ul {
+	padding-left: 1.5rem;
 }
 
 /* Code highlighting*/

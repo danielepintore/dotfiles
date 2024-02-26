@@ -17,6 +17,7 @@ $if(description-meta)$
   <meta name="description" content="$description-meta$" />
 $endif$
   <title>$if(title-prefix)$$title-prefix$ – $endif$$pagetitle$</title>
+  <link rel="stylesheet" href="/css/styles.css" />
 $for(css)$
   <link rel="stylesheet" href="$css$" />
 $endfor$
@@ -29,9 +30,6 @@ $if(mathjax)$
 $endif$
   $math$
 $endif$
-<style>
-	$styles.html()$
-</style>
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
   <![endif]-->
