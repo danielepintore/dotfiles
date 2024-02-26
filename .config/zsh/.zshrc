@@ -73,4 +73,4 @@ source $HOME/.config/zsh/themes/dracula.zsh
 # End theme section
 
 # Zsh syntax highlighting
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
