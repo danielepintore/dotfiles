@@ -1,4 +1,5 @@
-require("configs.remap")
-require("configs.packer")
-require("configs.set")
-require("configs.templates")
+require("configs.remap") -- set remps like leader and other useful ones
+require("configs.set") -- set vim preferences
+-- require("configs.packer")
+require("configs.lazy") -- configure lazy plugin manager
+require("configs.templates") -- configure templates for various files
