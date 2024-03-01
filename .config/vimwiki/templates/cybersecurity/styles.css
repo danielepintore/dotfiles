@@ -9,6 +9,8 @@ code {
   font-size: 90%;
   color: #32c725;
   background-color: #0f240e;
+	border-radius: .4rem;
+	padding: .15rem;
 }
 
 pre code {
@@ -16,6 +18,7 @@ pre code {
 	color: #fff;
   font-size: 90%;
   background-color: #0000;
+	padding: 0;
 }
 
 pre {
