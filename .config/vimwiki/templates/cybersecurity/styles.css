@@ -6,25 +6,26 @@ img {
 
 code {
   font-family: Menlo, Monaco, "Courier New", monospace;
-	padding: 2px 4px;
   font-size: 90%;
   color: #32c725;
   background-color: #0f240e;
-  border-radius: .4rem;
+	border-radius: .4rem;
+	padding: .15rem;
 }
 
 pre code {
   font-family: Menlo, Monaco, "Courier New", monospace;
 	color: #fff;
-	padding: 2px 4px;
   font-size: 90%;
   background-color: #0000;
+	padding: 0;
 }
 
 pre {
   padding: .5rem;
   line-height: 1.25;
   overflow-x: scroll;
+  border-radius: .4rem;
 }
 
 .sourceCode {
