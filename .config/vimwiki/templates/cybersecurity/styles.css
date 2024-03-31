@@ -1,3 +1,5 @@
+figcaption { display: none; }
+
 img {
 	border-radius: .5rem;
 	margin: auto;
