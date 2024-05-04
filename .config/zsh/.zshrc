@@ -72,5 +72,8 @@ bindkey -v '^R' history-incremental-search-backward
 source $HOME/.config/zsh/themes/dracula.zsh
 # End theme section
 
+# Set up fzf key bindings and fuzzy completion
+eval "$(fzf --zsh)"
+
 # Zsh syntax highlighting
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

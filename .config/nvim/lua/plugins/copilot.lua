@@ -1,5 +1,6 @@
 return {
   "zbirenbaum/copilot-cmp",
+	enabled = false,
   cmd = "Copilot",
   event = "InsertEnter",
 	dependencies = {
