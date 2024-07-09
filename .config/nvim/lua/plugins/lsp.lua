@@ -1,5 +1,6 @@
 return {
-	{	'neovim/nvim-lspconfig',
+	{
+		'neovim/nvim-lspconfig',
 		dependencies = {
 			'williamboman/mason.nvim',
 			'williamboman/mason-lspconfig.nvim',
@@ -21,14 +22,14 @@ return {
 			require('fidget').setup({})
 			require('mason').setup()
 			require('mason-lspconfig').setup({
-				ensure_installed = {'eslint', 'tsserver', 'rust_analyzer', 'lua_ls', 'clangd', 'volar', 'pylsp'},
+				ensure_installed = { 'eslint', 'tsserver', 'rust_analyzer', 'lua_ls', 'clangd', 'volar', 'pylsp' },
 			})
 
 			require("mason-lspconfig").setup_handlers {
 				-- The first entry (without a key) will be the default handler
 				-- and will be called for each installed server that doesn't have
 				-- a dedicated handler.
-				function (server_name) -- default handler (optional)
+				function(server_name) -- default handler (optional)
 					local server_config = {
 						capabilities = capabilities,
 					}
@@ -48,7 +49,7 @@ return {
 				-- end
 
 				-- configure lua server to fix vim warning
-				["lua_ls"] = function ()
+				["lua_ls"] = function()
 					local lspconfig = require("lspconfig")
 					lspconfig.lua_ls.setup {
 						capabilities = capabilities,
@@ -103,6 +104,7 @@ return {
 			local cmp_select_behavior = { behavior = cmp.SelectBehavior.Select }
 
 			cmp.setup({
+				preselect = cmp.PreselectMode.None,
 				snippet = {
 					-- REQUIRED - you must specify a snippet engine
 					expand = function(args)
@@ -111,8 +113,17 @@ return {
 				},
 				mapping = cmp.mapping.preset.insert({
 					-- `Enter` key to confirm completion
-					['<CR>'] = cmp.mapping.confirm({select = false}),
-
+					['<CR>'] = cmp.mapping({
+						i = function(fallback)
+							if cmp.visible() and cmp.get_active_entry() then
+								cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false })
+							else
+								fallback()
+							end
+						end,
+						s = cmp.mapping.confirm({ select = true }),
+						c = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
+					}),
 					-- Alt+Space to trigger completion menu
 					['<M-Space>'] = cmp.mapping.complete(),
 
@@ -123,31 +134,31 @@ return {
 
 					-- Navigate between documentation
 					['<C-f>'] = cmp.mapping.scroll_docs(4),
-					['<C-r>'] = cmp.mapping.scroll_docs(-4),
+					['<C-d>'] = cmp.mapping.scroll_docs(-4),
 				}),
 				sources = cmp.config.sources({
-					{ name = 'nvim_lsp' },
-					{ name = 'luasnip' }, -- For luasnip users.
-					-- Copilot Source
-					{ name = "copilot", group_index = 2 },
-				},
-				{
-					{ name = 'buffer' },
-				})
+						{ name = 'nvim_lsp' },
+						{ name = 'luasnip' }, -- For luasnip users.
+						-- Copilot Source
+						{ name = "copilot", group_index = 2 },
+					},
+					{
+						{ name = 'buffer' },
+					})
 			})
 
-		-- end cmp setup
+			-- end cmp setup
 
-		vim.diagnostic.config({
-			float = {
-				focusable = false,
-				style = 'minimal',
-				border = 'rounded',
-				source = 'always',
-				header = '',
-				prefix = '',
-			}
-		})
+			vim.diagnostic.config({
+				float = {
+					focusable = false,
+					style = 'minimal',
+					border = 'rounded',
+					source = 'always',
+					header = '',
+					prefix = '',
+				}
+			})
 		end
 	}
 }
