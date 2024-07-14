@@ -13,7 +13,7 @@ precmd () { vcs_info }
 setopt prompt_subst
 
 #PS1="\$vcs_info_msg_0_ $PS1"
-PS1='%F{10}%~ %f${vcs_info_msg_0_}'
+PS1=' %F{#91C79C}%~ %f${vcs_info_msg_0_}'
 
 # History in zsh dir 
 HISTFILE=~/.config/zsh/histfile
