@@ -3,7 +3,7 @@ return {
 	init = function()
 		-- Restrict vimwiki to only the path specified in the vimwiki_list global var
 		vim.g.vimwiki_global_ext = 0
-		-- Configure a list of vimwiki wiki, need a :PackerCompile to apply
+		-- Configure a list of vimwiki wiki
 		vim.g.vimwiki_list = {
 			{
 				path = '~/Documents/cybersecurity/wiki/',
