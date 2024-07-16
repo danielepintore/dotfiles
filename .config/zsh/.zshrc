@@ -75,5 +75,8 @@ source $HOME/.config/zsh/themes/dracula.zsh
 # Set up fzf key bindings and fuzzy completion
 eval "$(fzf --zsh)"
 
+# tmux-sessionizer
+bindkey -s ^n "tmux-sessionizer\n"
+
 # Zsh syntax highlighting
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
