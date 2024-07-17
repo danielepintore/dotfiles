@@ -76,7 +76,7 @@ source $HOME/.config/zsh/themes/dracula.zsh
 eval "$(fzf --zsh)"
 
 # tmux-sessionizer
-bindkey -s ^f "tmux-sessionizer\n"
+bindkey -s ^n "tmux-sessionizer\n"
 
 # Zsh syntax highlighting
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
