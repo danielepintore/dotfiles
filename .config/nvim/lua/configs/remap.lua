@@ -23,6 +23,7 @@ vim.keymap.set({"n", "v"}, "<leader>d", [["_d]])
 vim.keymap.set("i", "<C-c>", "<Esc>")
 
 vim.keymap.set("n", "Q", "<nop>")
+vim.keymap.set("n", "<C-n>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
 vim.keymap.set("n", "<leader>qf", vim.lsp.buf.code_action)
 vim.keymap.set("n", "<leader>r", "e!")
@@ -41,12 +42,3 @@ end)
 
 -- Redo by pressing r in normal mode
 vim.keymap.set("n", "r", "<C-r>")
-
--- Indent whole file with codefmt
-vim.keymap.set("n", "<leader>i", "<cmd>FormatCode<CR>")
-
--- Fast save
-vim.keymap.set("n", "<leader>w", "<cmd>w<CR>")
-vim.keymap.set("n", "<leader>q", "<cmd>q<CR>")
-
-
