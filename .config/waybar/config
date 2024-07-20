@@ -1,15 +1,18 @@
 {
     "layer": "top", // Waybar at top layer
     "position": "top", // Waybar position (top|bottom|left|right)
-    "height": 30, // Waybar height (to be removed for auto height)
-    // "width": 1280, // Waybar width
+    "height": 22, // Waybar height (to be removed for auto height)
+		// "width": 1280, // Waybar width
     "spacing": 4, // Gaps between modules (4px)
     "margin-top": 5,
+		"reload_style_on_change": true,
     // Choose the order of the modules
     "modules-left": ["tray"],
     //"modules-left": ["sway/workspaces", "sway/mode", "sway/scratchpad", "custom/media"],
     //"modules-center": [""],
-    "modules-right": ["pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "keyboard-state", "sway/language", "battery", "clock", "custom/power"],
+    "modules-center": ["pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "keyboard-state", "sway/language", "battery"],
+		"modules-right": ["clock", "custom/power"],
+    //"modules-right": ["tray", "pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "keyboard-state", "sway/language", "battery", "clock", "custom/power"],
     // Modules configuration
     // "sway/workspaces": {
     //     "disable-scroll": true,
@@ -97,6 +100,10 @@
     },
     "memory": {
         "format": "{}% "
+					"states": {
+						"warning": 80,
+						"critical": 90
+					}
     },
     "temperature": {
         "thermal-zone": 6,

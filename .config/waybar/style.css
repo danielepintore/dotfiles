@@ -93,6 +93,7 @@ button:hover {
     border-radius: 10px;
     padding: 0 10px;
     color: #ffffff;
+    background-color: rgba(80, 80, 80, 0.5);
 }
 
 #window,
@@ -111,9 +112,8 @@ button:hover {
 }
 
 #custom-power { 
-    background-color: rgba(80, 80, 80, 0.8);
-    margin-right: 7px;
-	padding: 0 10px 0 7px;
+    background-color: rgba(10, 10, 10, 0.95);
+		padding: 0 13px 0 7px;
 }
 
 #window {
@@ -122,17 +122,17 @@ button:hover {
 }
 
 #clock {
-    background-color: rgba(80, 80, 80, 0.8);
+    background-color: rgba(10, 10, 10, 0.95);
 }
 
 #battery {
-    background-color: #ffffff;
-    color: #000000;
+    background-color: rgba(10, 10, 10, 0.95);
+    transition-property: background-color;
+    transition-duration: .5s;
 }
 
 #battery.charging, #battery.plugged {
-    color: #ffffff;
-    background-color: #26A65B;
+    background-color: #29ad60;
 }
 
 @keyframes blink {
@@ -157,38 +157,42 @@ label:focus {
 }
 
 #cpu {
-    background-color: #2ecc71;
-    color: #000000;
+    background-color: rgba(10, 10, 10, 0.95);
 }
 
 #memory {
-    background-color: #9b59b6;
+    background-color: rgba(10, 10, 10, 0.95);
 }
 
-#disk {
-    background-color: #964B00;
+#memory.warning {
+    background-color: #ffa000;
 }
 
-#backlight {
-    background-color: #90b1b1;
-}
-
-#network {
-    background-color: #2980b9;
-}
-
-#network.disconnected {
+#memory.critical {
     background-color: #f53c3c;
 }
 
+#disk {
+    background-color: rgba(10, 10, 10, 0.95);
+}
+
+#backlight {
+    background-color: rgba(10, 10, 10, 0.95);
+}
+
+#network {
+    background-color: rgba(10, 10, 10, 0.95);
+}
+
+#network.disconnected {
+    background-color: rgba(10, 10, 10, 0.95);
+}
+
 #pulseaudio {
-    background-color: #f1c40f;
-    color: #000000;
+    background-color: rgba(10, 10, 10, 0.95);
 }
 
 #pulseaudio.muted {
-    background-color: #90b1b1;
-    color: #2a5c45;
 }
 
 #wireplumber {
@@ -215,7 +219,9 @@ label:focus {
 }
 
 #temperature {
-    background-color: #f0932b;
+    background-color: rgba(10, 10, 10, 0.95);
+    transition-property: background-color;
+    transition-duration: .5s;
 }
 
 #temperature.critical {
@@ -224,8 +230,7 @@ label:focus {
 
 #tray {
     margin-left: 10px;
-    /*background-color: #2980b9; */
-    background-color: rgba(80, 80, 80, 0.5);
+    background-color: rgba(10, 10, 10, 0.95);
 }
 
 #tray > .passive {
