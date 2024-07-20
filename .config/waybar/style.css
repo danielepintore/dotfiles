@@ -135,7 +135,7 @@ button:hover {
     background-color: #29ad60;
 }
 
-#battery.warning {
+#battery.warning:not(.charging){
     background-color: #ffa000;
 }
 
