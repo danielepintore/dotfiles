@@ -136,8 +136,9 @@ return {
 					['<C-d>'] = cmp.mapping.scroll_docs(-4),
 				}),
 				sources = cmp.config.sources({
-						{ name = 'nvim_lsp' },
 						{ name = 'luasnip' }, -- For luasnip users.
+						{ name = 'nvim_lsp' },
+						{ name = 'path' },
 						-- Copilot Source
 						{ name = "copilot", group_index = 2 },
 					},
@@ -158,6 +159,22 @@ return {
 					prefix = '',
 				}
 			})
+
+			-- keymaps for snippet navigation
+			--
+			-- Move up in snippet fields
+			local ls = require('luasnip')
+			vim.keymap.set({ "i", "s" }, "<C-k>", function()
+				if ls.jumpable(-1) then
+					ls.jump(-1)
+				end
+			end, { silent = true })
+			-- Move down in snippet fields
+			vim.keymap.set({ "i", "s" }, "<C-j>", function()
+				if ls.expand_or_jumpable() then
+					ls.expand_or_jump()
+				end
+			end, { silent = true })
 		end
 	}
 }
