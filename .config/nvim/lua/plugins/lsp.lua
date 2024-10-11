@@ -22,7 +22,7 @@ return {
 			require('fidget').setup({})
 			require('mason').setup()
 			require('mason-lspconfig').setup({
-				ensure_installed = { 'eslint', 'tsserver', 'rust_analyzer', 'lua_ls', 'clangd', 'volar', 'pylsp' },
+				ensure_installed = { 'eslint', 'ts_ls', 'rust_analyzer', 'lua_ls', 'clangd', 'volar', 'pylsp' },
 			})
 
 			require("mason-lspconfig").setup_handlers {
