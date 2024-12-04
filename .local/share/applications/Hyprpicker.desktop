@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=HyprPicker
+Exec=/bin/bash -c "sleep .4 && hyprpicker --autocopy" #Sleep fixes rofi still on screen
+Type=Application
+Terminal=false
+Categories=Application;
+Keywords=Color;Picker;
+Comment=Color picker for wayland compositors
+StartupWMClass=hyprpicker

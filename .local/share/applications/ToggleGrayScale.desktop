@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Toggle GrayScale
+Exec=/bin/bash -c "$HOME/.config/hypr/shaders/toggle_shader"
+Type=Application
+Terminal=false
+Categories=Application;
+Keywords=Color;
+Comment=Toggles the GrayScale mode 
+StartupWMClass=toggleGrayScaleEntry
+
