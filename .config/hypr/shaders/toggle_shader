@@ -1,0 +1,10 @@
+# Check if the file exists
+if [ ! -f "$HOME/.config/hypr/shaders/shader_is_active" ]; then
+	# Activate shader
+	sed -Ei 's/^#([[:blank:]]*)/\1/' $HOME/.config/hypr/shaders/shader.conf
+	touch $HOME/.config/hypr/shaders/shader_is_active
+else
+  # Deactivate shader
+	sed -i 's/^[[:blank:]]*/#&/' $HOME/.config/hypr/shaders/shader.conf
+	rm $HOME/.config/hypr/shaders/shader_is_active
+fi
