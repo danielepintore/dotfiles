@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=CloudStorage
+Exec=/bin/bash -c "rclone mount --config /home/daniele/.config/rclone/rclone.conf --vfs-cache-mode full --vfs-cache-max-size 30G --daemon pc-drive:/ '/home/daniele/Cloud Storage/'; nemo '/home/daniele/Cloud Storage/';"
+Type=Application
+Terminal=false
+Categories=Application;
+Keywords=Cloud;Storage;Drive;
+Comment=Mounts my cloud storage
+StartupWMClass=CloudStorage
