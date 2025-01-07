@@ -18,5 +18,6 @@ return {
 			},
 		}
 	end,
+	ft = {"markdown",}
 	}
 }
