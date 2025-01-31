@@ -247,12 +247,14 @@ label:focus {
 }
 
 #idle_inhibitor {
-    background-color: #2d3436;
+    background-color: rgba(10, 10, 10, 0.95);
+    transition-property: background-color;
+    transition-duration: 1s;
 }
 
 #idle_inhibitor.activated {
     background-color: #ecf0f1;
-    color: #2d3436;
+    color: rgba(10, 10, 10, 0.95);
 }
 
 #mpd {
