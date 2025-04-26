@@ -4,9 +4,10 @@
   "IS_MINIMIZED": false,
   "WINDOW_BOUNDS": {
     "x": 7,
-    "y": 51,
+    "y": 41,
     "width": 1905,
-    "height": 1141
+    "height": 1151
   },
-  "chromiumSwitches": {}
+  "chromiumSwitches": {},
+  "BACKGROUND_COLOR": "#000000"
 }
