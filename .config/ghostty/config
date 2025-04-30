@@ -47,3 +47,5 @@ background-opacity = 0.8
 background-blur = true
 resize-overlay = never
 cursor-color = #ffffff
+cursor-invert-fg-bg = true
+adjust-cursor-thickness = 3
