@@ -27,13 +27,13 @@
     width = 300
 
     # The maximum height of a single notification, excluding the frame.
-    height = 100
+    height = (0, 100)
 
     # Position the notification in the top right corner
     origin = top-right
 
     # Offset from the origin
-    offset = 10x50
+    offset = (10, 50)
 
     # Scale factor. It is auto-detected if value is 0.
     scale = 0
@@ -82,7 +82,7 @@
     separator_height = 2
 
     # Padding between text and separator.
-    padding = 8
+    padding = 15
 
     # Horizontal padding.
     horizontal_padding = 8
@@ -92,7 +92,7 @@
 
     # Defines width in pixels of frame around the notification window.
     # Set to 0 to disable.
-    frame_width = 3
+    frame_width = 0
 
     # Defines color of the frame around the notification window.
     frame_color = "#aaaaaa"
@@ -101,7 +101,7 @@
     # If value is greater than 0, separator_height will be ignored and a border
     # of size frame_width will be drawn around each notification instead.
     # Click events on gaps do not currently propagate to applications below.
-    gap_size = 0
+    gap_size = 5
 
     # Define a color for the separator.
     # possible values are:
@@ -123,7 +123,7 @@
 
     ### Text ###
 
-    font = Monospace 8
+    font = JetBrainsMono 10
 
     # The spacing between lines.  If the height is smaller than the
     # font height, it will get raised to the font height.
@@ -250,7 +250,7 @@
     # corners.
     # The radius will be automatically lowered if it exceeds half of the
     # notification height to avoid clipping text and/or icons.
-    corner_radius = 0
+    corner_radius = 5
 
     # Ignore the dbus closeNotification message.
     # Useful to enforce the timeout set by dunst configuration. Without this
@@ -313,21 +313,21 @@
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the "#" and following would be interpreted as a comment.
-    background = "#222222"
-    foreground = "#888888"
+    background = "#222222C0"
+    foreground = "#ffffff"
     timeout = 10
     # Icon for notifications with low urgency, uncomment to enable
     #default_icon = /path/to/icon
 
 [urgency_normal]
-    background = "#285577"
+    background = "#222222C0"
     foreground = "#ffffff"
     timeout = 10
     # Icon for notifications with normal urgency, uncomment to enable
     #default_icon = /path/to/icon
 
 [urgency_critical]
-    background = "#900000"
+    background = "#900000C0"
     foreground = "#ffffff"
     frame_color = "#ff0000"
     timeout = 0
