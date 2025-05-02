@@ -38,6 +38,10 @@ bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
 bindkey -v '^?' backward-delete-char
 
+# ctrl+arrows to move between words
+bindkey -M viins '\e[1;5D' backward-word   # Ctrl+Left in insert mode
+bindkey -M viins '\e[1;5C' forward-word    # Ctrl+Right in insert mode
+
 # Change cursor shape for different vi modes.
 function zle-keymap-select {
   if [[ ${KEYMAP} == vicmd ]] ||
