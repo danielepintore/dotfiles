@@ -1,7 +1,7 @@
 * {
     /* `otf-font-awesome` is required to be installed for icons */
-    font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
-    font-size: 13px;
+    font-family: JetBrains Mono Nerd;
+    font-size: 0.85rem;
 }
 
 window#waybar {
@@ -91,8 +91,8 @@ button:hover {
 #mpd {
     border: 2px solid transparent;
     border-radius: 10px;
-    padding: 0 10px;
     color: #ffffff;
+    padding: 0 0.625rem;
     background-color: rgba(80, 80, 80, 0.5);
 }
 
@@ -112,31 +112,29 @@ button:hover {
 }
 
 #custom-power { 
-    background-color: rgba(10, 10, 10, 0.95);
-		padding: 0 13px 0 7px;
+    background-color: rgba(10, 10, 10, 0.6);
 }
 
 #window {
-		margin-right: 10px;
 		background-color: rgba(80, 80, 80, 0.8);
 }
 
 #clock {
-    background-color: rgba(10, 10, 10, 0.95);
+    background-color: rgba(10, 10, 10, 0.6);
 }
 
 #battery {
-    background-color: rgba(10, 10, 10, 0.95);
+    background-color: rgba(10, 10, 10, 0.6);
     transition-property: background-color;
     transition-duration: .5s;
 }
 
 #battery.charging, #battery.plugged {
-    background-color: #29ad60;
+    background-color: alpha(#29ad60, 0.8);
 }
 
 #battery.warning:not(.charging){
-    background-color: #ffa000;
+    background-color: alpha(#ffa000, 0.6);
 }
 
 @keyframes blink {
@@ -147,7 +145,7 @@ button:hover {
 }
 
 #battery.critical:not(.charging) {
-    background-color: #f53c3c;
+    background-color: alpha(#f53c3c, 0.8);
     color: #ffffff;
     animation-name: blink;
     animation-duration: 0.5s;
@@ -157,15 +155,15 @@ button:hover {
 }
 
 label:focus {
-    background-color: #000000;
+    background-color: alpha(#000000, 0.6);
 }
 
 #cpu {
-    background-color: rgba(10, 10, 10, 0.95);
+    background-color: rgba(10, 10, 10, 0.6);
 }
 
 #memory {
-    background-color: rgba(10, 10, 10, 0.95);
+    background-color: rgba(10, 10, 10, 0.6);
 }
 
 #memory.warning {
@@ -177,23 +175,23 @@ label:focus {
 }
 
 #disk {
-    background-color: rgba(10, 10, 10, 0.95);
+    background-color: rgba(10, 10, 10, 0.6);
 }
 
 #backlight {
-    background-color: rgba(10, 10, 10, 0.95);
+    background-color: rgba(10, 10, 10, 0.6);
 }
 
 #network {
-    background-color: rgba(10, 10, 10, 0.95);
+    background-color: rgba(10, 10, 10, 0.6);
 }
 
 #network.disconnected {
-    background-color: rgba(10, 10, 10, 0.95);
+    background-color: rgba(10, 10, 10, 0.6);
 }
 
 #pulseaudio {
-    background-color: rgba(10, 10, 10, 0.95);
+    background-color: rgba(10, 10, 10, 0.6);
 }
 
 #pulseaudio.muted {
@@ -223,18 +221,17 @@ label:focus {
 }
 
 #temperature {
-    background-color: rgba(10, 10, 10, 0.95);
+    background-color: rgba(10, 10, 10, 0.6);
     transition-property: background-color;
     transition-duration: .5s;
 }
 
 #temperature.critical {
-    background-color: #eb4d4b;
+    background-color: alpha(#eb4d4b, 0.6);
 }
 
 #tray {
-    margin-left: 10px;
-    background-color: rgba(10, 10, 10, 0.95);
+    background-color: rgba(10, 10, 10, 0.6);
 }
 
 #tray > .passive {
@@ -247,14 +244,14 @@ label:focus {
 }
 
 #idle_inhibitor {
-    background-color: rgba(10, 10, 10, 0.95);
+    background-color: rgba(10, 10, 10, 0.6);
     transition-property: background-color;
     transition-duration: 1s;
 }
 
 #idle_inhibitor.activated {
-    background-color: #ecf0f1;
-    color: rgba(10, 10, 10, 0.95);
+    background-color: alpha(#ecf0f1, 0.6);
+    color: rgb(10, 10, 10);
 }
 
 #mpd {
