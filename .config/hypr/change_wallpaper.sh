@@ -23,4 +23,4 @@ fi
 # Apply the selected wallpaper
 hyprctl hyprpaper reload ,"$WALLPAPER"
 # set background for hyprlock
-ln -sf $WALLPAPER $HOME/.config/hypr/hyprlock/background.jpg
+ln -sf $WALLPAPER $HOME/.config/hypr/wallpapers/background.jpg
