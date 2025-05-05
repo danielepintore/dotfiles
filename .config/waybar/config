@@ -2,61 +2,19 @@
     "layer": "top", // Waybar at top layer
     "position": "top", // Waybar position (top|bottom|left|right)
     "height": 22, // Waybar height (to be removed for auto height)
-		// "width": 1280, // Waybar width
     "spacing": 4, // Gaps between modules (4px)
     "margin-top": 5,
+    "margin-right": 5,
+    "margin-left": 5,
 		"reload_style_on_change": true,
     // Choose the order of the modules
     "modules-left": ["tray"],
     //"modules-left": ["sway/workspaces", "sway/mode", "sway/scratchpad", "custom/media"],
     //"modules-center": [""],
     "modules-center": ["pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "keyboard-state", "sway/language", "battery", "idle_inhibitor"],
-		"modules-right": ["clock", "custom/power"],
+		"modules-right": ["clock"],
     //"modules-right": ["tray", "pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "keyboard-state", "sway/language", "battery", "clock", "custom/power"],
     // Modules configuration
-    // "sway/workspaces": {
-    //     "disable-scroll": true,
-    //     "all-outputs": true,
-    //     "format": "{name}: {icon}",
-    //     "format-icons": {
-    //         "1": "",
-    //         "2": "",
-    //         "3": "",
-    //         "4": "",
-    //         "5": "",
-    //         "urgent": "",
-    //         "focused": "",
-    //         "default": ""
-    //     }
-    // },
-		//"hyprland/window": {
-    //"max-length": 200,
-    //"separate-outputs": true
-		//},
-		//"wlr/workspaces": {
-    // "format": "{icon}",
-    // "on-scroll-up": "hyprctl dispatch workspace e+1",
-    // "on-scroll-down": "hyprctl dispatch workspace e-1"
-		//},
-    //"keyboard-state": {
-    //    "numlock": true,
-    //    "capslock": true,
-    //    "format": "{name} {icon}",
-    //    "format-icons": {
-    //        "locked": "",
-    //        "unlocked": ""
-    //    }
-    //},
-    //"sway/mode": {
-    //    "format": "<span style=\"italic\">{}</span>"
-    //},
-    //"sway/scratchpad": {
-    //    "format": "{icon} {count}",
-    //    "show-empty": false,
-    //    "format-icons": ["", ""],
-    //    "tooltip": true,
-    //    "tooltip-format": "{app}: {title}"
-    //},
     "idle_inhibitor": {
         "format": "{icon}",
         "format-icons": {
@@ -68,21 +26,10 @@
         //"icon-size": 18,
         "spacing": 10
     },
-    //"clock": {
-        // "timezone": "America/New_York",
-        //"tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        //"format-alt": "{:%d/%m/%Y}",
-				//"calendar": {
-				//		"format": {
-				//				"weeks": "<span color='#99ffdd'><b>W{}</b></span>",
-				//		},
-				//},
-    //},
 		"clock": {
 				"timezone": "Europe/Rome",
 				"locale": "it_IT.UTF-8",
-        "format": "{:%H:%M} ",
-        "format-alt": "{:%d/%m/%Y (%R) }",
+        "format": "{:%d/%m/%Y (%R)}",
         "tooltip-format": "<tt><big>{calendar}</big></tt>",
         "calendar": {
         		"format": {
@@ -124,7 +71,7 @@
             "warning": 30,
             "critical": 15
         },
-        "format": "{capacity}% {icon}",
+        "format": "{capacity}% {icon} ",
         "format-charging": "{capacity}% ",
         "format-plugged": "{capacity}% ",
         "format-alt": "{time} {icon}",
@@ -133,20 +80,19 @@
         "format-icons": ["", "", "", "", ""]
     },
     "network": {
-        // "interface": "wlp2*", // (Optional) To force the use of this interface
         "format-wifi": "{essid} ({signalStrength}%) ",
         "format-ethernet": "{ipaddr}/{cidr} ",
         "tooltip-format": "{ifname} via {gwaddr} ",
         "format-linked": "{ifname} (No IP) ",
         "format-disconnected": "Disconnected ⚠",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+        "format-alt": "{ifname}: {ipaddr}/{cidr}",
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
-        "format": "{volume}% {icon} {format_source}",
-        "format-bluetooth": "{volume}%  {format_source}",
-        "format-bluetooth-muted": " {format_source}",
-        "format-muted": " {format_source}",
+        "format": "{volume}% {icon}",
+        "format-bluetooth": "{volume}% ",
+        "format-bluetooth-muted": "",
+        "format-muted": " ",
         "format-source": "{volume}% ",
         "format-source-muted": "",
         "format-icons": {
@@ -160,10 +106,10 @@
         },
         "on-click": "pavucontrol"
     },
-    "custom/power":{ 
-	"format":"",
-	"on-click":"rofi -show p -modi p:'~/.config/rofi/utils/rofi-power-menu --choices shutdown/reboot/suspend --no-symbols'"
-    },
+		"custom/power": { 
+			"format":" ",
+			"on-click":"rofi -show p -modi p:'~/.config/rofi/utils/rofi-power-menu --choices shutdown/reboot/suspend --no-symbols'"
+		},
     "custom/media": {
         "format": "{icon} {}",
         "return-type": "json",
