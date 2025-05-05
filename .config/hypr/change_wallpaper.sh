@@ -1,18 +1,26 @@
-#!/bin/sh
-mkdir -p ~/.config/hypr/hyprlock/
-wallpaper=$(find ~/.config/hypr/wallpapers/ -type f | shuf -n1)
-swaybg -i $wallpaper &
-# Update hyprlock background
-cp $wallpaper ~/.config/hypr/hyprlock/background.jpg
-OLD_PID=$!
-while true; do
-		wallpaper=$(find ~/.config/hypr/wallpapers/ -type f | shuf -n1)
-    sleep 600
-		swaybg -i $wallpaper &
-		# Update hyprlock background
-		cp $wallpaper ~/.config/hypr/hyprlock/background.jpg
-    NEXT_PID=$!
-    sleep 5
-    kill $OLD_PID
-    OLD_PID=$NEXT_PID
-done
+#!/usr/bin/env bash
+
+# You can run this script with the random parameter to select a random wallpaper
+# from the active wallpaper directory. Otherwise a prompt will appear asking
+# for a wallpaper
+
+WALLPAPER_DIR="$HOME/.config/hypr/wallpapers/"
+CURRENT_WALL=$(hyprctl hyprpaper listloaded)
+
+if [[ $1 == "random" ]];then
+	# Get a random wallpaper that is not the current one
+	WALLPAPER=$(find "$WALLPAPER_DIR" -type f ! -name "$(basename "$CURRENT_WALL")" | shuf -n 1)
+else
+	CHOICE=$(find $WALLPAPER_DIR -maxdepth 1 -type f -printf "%f\n" | sort | rofi -dmenu -p "Wallpaper: ")
+	WALLPAPER="$WALLPAPER_DIR$CHOICE"
+	# if we quit rofi then WALLPAPER == WALLPAPER_DIR then we need to quit without
+	# changing the wallpaper
+	if [[ $WALLPAPER_DIR == $WALLPAPER ]];then
+		exit 0
+	fi
+fi
+
+# Apply the selected wallpaper
+hyprctl hyprpaper reload ,"$WALLPAPER"
+# set background for hyprlock
+ln -sf $WALLPAPER $HOME/.config/hypr/hyprlock/background.jpg
