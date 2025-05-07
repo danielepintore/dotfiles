@@ -44,7 +44,6 @@
 confirm-close-surface = false
 theme = Builtin Pastel Dark
 background-opacity = 0.8
-background-blur = true
 resize-overlay = never
 cursor-color = #ffffff
 cursor-invert-fg-bg = true
