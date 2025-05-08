@@ -9,7 +9,7 @@ CURRENT_WALL=$(hyprctl hyprpaper listloaded)
 
 if [[ $1 == "random" ]];then
 	# Get a random wallpaper that is not the current one
-	WALLPAPER=$(find "$WALLPAPER_DIR" -type f ! -name "$(basename "$CURRENT_WALL")" | shuf -n 1)
+	WALLPAPER=$(find "$WALLPAPER_DIR" -maxdepth 1 -type f ! -name "$(basename "$CURRENT_WALL")" | shuf -n 1)
 else
 	CHOICE=$(find $WALLPAPER_DIR -maxdepth 1 -type f -printf "%f\n" | sort | rofi -dmenu -p "Wallpaper: ")
 	WALLPAPER="$WALLPAPER_DIR$CHOICE"
