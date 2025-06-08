@@ -1,77 +1,13 @@
 return {
 	{
 		'neovim/nvim-lspconfig',
-		dependencies = {
-			'williamboman/mason.nvim',
-			'williamboman/mason-lspconfig.nvim',
-			'folke/neoconf.nvim',
-			'hrsh7th/cmp-nvim-lsp',
-			'hrsh7th/cmp-buffer',
-			'hrsh7th/cmp-path',
-			'hrsh7th/cmp-cmdline',
-			'hrsh7th/nvim-cmp',
-			'L3MON4D3/LuaSnip',
-			'saadparwaiz1/cmp_luasnip',
-			{ 'j-hui/fidget.nvim', tag = 'v1.4.0' },
+		keys = {
+			{ "<space>e", vim.diagnostic.open_float, mode = "n", desc = "Open diagnostic float" },
+			{ "[d",       vim.diagnostic.goto_prev,  mode = "n", desc = "Go to previous diagnostic" },
+			{ "]d",       vim.diagnostic.goto_next,  mode = "n", desc = "Go to next diagnostic" },
+			{ "<space>q", vim.diagnostic.setloclist, mode = "n", desc = "Set location list with diagnostics" },
 		},
-
 		config = function()
-			local cmp = require('cmp')
-			local cmp_lsp = require('cmp_nvim_lsp')
-			local capabilities = cmp_lsp.default_capabilities()
-			require('fidget').setup({})
-			require('mason').setup()
-			require('mason-lspconfig').setup({
-				ensure_installed = { 'eslint', 'ts_ls', 'rust_analyzer', 'lua_ls', 'clangd', 'volar', 'pylsp' },
-			})
-
-			require("mason-lspconfig").setup_handlers {
-				-- The first entry (without a key) will be the default handler
-				-- and will be called for each installed server that doesn't have
-				-- a dedicated handler.
-				function(server_name) -- default handler (optional)
-					local server_config = {
-						capabilities = capabilities,
-					}
-					if require("neoconf").get(server_name .. ".disable") then -- disable servers with neoconfg
-						return
-					end
-					if server_name == "volar" then -- TODO: fix for tsserver should i keep this can i just uninstall tsserver and use only volar?
-						server_config.filetypes = { 'vue', 'typescript', 'javascript' }
-					end
-					require("lspconfig")[server_name].setup(server_config)
-				end,
-
-				-- Next, you can provide a dedicated handler for specific servers.
-				-- For example, a handler override for the `rust_analyzer`:
-				-- ["rust_analyzer"] = function ()
-				--	require("rust-tools").setup {}
-				-- end
-
-				-- configure lua server to fix vim warning
-				["lua_ls"] = function()
-					local lspconfig = require("lspconfig")
-					lspconfig.lua_ls.setup {
-						capabilities = capabilities,
-						settings = {
-							Lua = {
-								diagnostics = {
-									globals = { "vim" }
-								}
-							}
-						}
-					}
-				end,
-			}
-			-- end mason_lspconfig setup handlers
-			-- setup keymaps:
-			-- Global mappings.
-			-- See `:help vim.diagnostic.*` for documentation on any of the below functions
-			vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
-			vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
-			vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
-			vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist)
-
 			-- Use LspAttach autocommand to only map the following keys
 			-- after the language server attaches to the current buffer
 			vim.api.nvim_create_autocmd('LspAttach', {
@@ -99,7 +35,20 @@ return {
 				end,
 			})
 
+			-- Set up diagnostics
+			vim.diagnostic.config({
+				float = {
+					focusable = false,
+					style = 'minimal',
+					border = 'rounded',
+					source = 'always',
+					header = '',
+					prefix = '',
+				}
+			})
 
+			-- Set up cmp
+			local cmp = require('cmp')
 			local cmp_select_behavior = { behavior = cmp.SelectBehavior.Select }
 
 			cmp.setup({
@@ -136,45 +85,68 @@ return {
 					['<C-d>'] = cmp.mapping.scroll_docs(-4),
 				}),
 				sources = cmp.config.sources({
-						{ name = 'luasnip' }, -- For luasnip users.
-						{ name = 'nvim_lsp' },
-						{ name = 'path' },
-						-- Copilot Source
-						{ name = "copilot", group_index = 2 },
-					},
-					{
-						{ name = 'buffer' },
-					})
+					{ name = 'nvim_lsp' },
+					{ name = 'path' },
+					{ name = 'luasnip' },
+					{ name = 'buffer' },
+					-- Copilot Source
+					{ name = "copilot", group_index = 2 },
+				}),
 			})
+		end,
+		dependencies = {
+			'L3MON4D3/LuaSnip',
+			'hrsh7th/cmp-buffer',
+			'hrsh7th/cmp-cmdline',
+			'hrsh7th/cmp-nvim-lsp',
+			'hrsh7th/cmp-path',
+			'hrsh7th/nvim-cmp',
+			'saadparwaiz1/cmp_luasnip',
+			{ 'j-hui/fidget.nvim', opts = {} },
+		},
+	},
 
-			-- end cmp setup
+	{
+		'mason-org/mason-lspconfig.nvim',
+		dependencies = {
+			{ 'mason-org/mason.nvim', opts = {} },
+			'neovim/nvim-lspconfig',
+		},
 
-			vim.diagnostic.config({
-				float = {
-					focusable = false,
-					style = 'minimal',
-					border = 'rounded',
-					source = 'always',
-					header = '',
-					prefix = '',
-				}
-			})
+		opts = {
+			ensure_installed = { 'eslint', 'ts_ls', 'rust_analyzer', 'lua_ls', 'clangd', 'pylsp' },
+		},
+	},
 
-			-- keymaps for snippet navigation
-			--
+	{
+		"L3MON4D3/LuaSnip", -- Snippet engine
+		keys = {
 			-- Move up in snippet fields
-			local ls = require('luasnip')
-			vim.keymap.set({ "i", "s" }, "<C-k>", function()
-				if ls.jumpable(-1) then
-					ls.jump(-1)
-				end
-			end, { silent = true })
+			{
+				"<C-k>",
+				function()
+					local ls = require("luasnip")
+					if ls.jumpable(-1) then
+						ls.jump(-1)
+					end
+				end,
+				mode = { "i", "s" },
+				desc = "Jump to the previous snippet field",
+				silent = true,
+			},
 			-- Move down in snippet fields
-			vim.keymap.set({ "i", "s" }, "<C-j>", function()
-				if ls.expand_or_jumpable() then
-					ls.expand_or_jump()
-				end
-			end, { silent = true })
-		end
-	}
+			{
+				"<C-j>",
+				function()
+					local ls = require("luasnip")
+					if ls.expand_or_jumpable() then
+						ls.expand_or_jump()
+					end
+				end,
+				mode = { "i", "s" },
+				desc = "Expand or jump to the next snippet field",
+				silent = true,
+			},
+		},
+	},
 }
