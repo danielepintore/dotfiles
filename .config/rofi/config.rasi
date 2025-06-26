@@ -3,4 +3,6 @@
 
 //@theme "/home/daniele/.local/share/rofi/themes/spotlight-dark.rasi"
 
-@theme "/home/daniele/.local/share/rofi/themes/rounded-gray-dark.rasi"
+//@theme "/home/daniele/.local/share/rofi/themes/rounded-gray-dark.rasi"
+
+@theme "/home/daniele/.local/share/rofi/themes/spotlight-dark.rasi"
