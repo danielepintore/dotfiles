@@ -5,11 +5,11 @@
  *******************************************************************************/
 
 * {
-    font:   "Montserrat 12";
+    font:   "JetBrainsMonoNLNerdFont 12";
 
-    bg0:    #242424E6;
+    bg0:    #24242480;
     bg1:    #7E7E7E80;
-    bg2:    #a6a6a6;
+    bg2:    #a6a6a650;
 
     fg0:    #DEDEDE;
     fg1:    #FFFFFF;
@@ -28,7 +28,9 @@ window {
 
     location:       center;
     width:          640;
-    border-radius:  8;
+		border: 1px solid;
+		border-color: #7E7E7E80;
+    border-radius:  16;
 }
 
 inputbar {
@@ -66,7 +68,7 @@ textbox {
 }
 
 listview {
-    lines:      10;
+    lines:      5;
     columns:    1;
 
     fixed-height:   false;
