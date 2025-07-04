@@ -29,7 +29,7 @@
 		"clock": {
 				"timezone": "Europe/Rome",
 				"locale": "it_IT.UTF-8",
-        "format": "{:%d/%m/%Y (%R)}",
+        "format": "{:L%A %d/%m/%Y %R}",
         "tooltip-format": "<tt><big>{calendar}</big></tt>",
         "calendar": {
         		"format": {
