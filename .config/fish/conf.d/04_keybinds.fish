@@ -8,5 +8,5 @@ bind k 'if commandline --paging-mode; commandline --function up-line; else; comm
 # tmux-sessionizer (Ctrl+n)
 bind ctrl-n 'tmux-sessionizer'
 
-bind shift-enter 'accept-autosuggestion'
+bind : 'accept-autosuggestion'
 

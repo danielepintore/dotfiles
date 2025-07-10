@@ -86,5 +86,5 @@ function fish_prompt
                 end
         end
     
-        echo -n -s ' '$cwd $repo_info $normal ' '
+        echo -n -s -e ' '$cwd $repo_info $normal ' \e[6 q'
 end
