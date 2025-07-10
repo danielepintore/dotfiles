@@ -6,7 +6,7 @@ bind j 'if commandline --paging-mode; commandline --function down-line; else; co
 bind k 'if commandline --paging-mode; commandline --function up-line; else; commandline --insert k; end'
 
 # tmux-sessionizer (Ctrl+n)
-bind ctrl-n 'tmux-sessionizer'
+bind ctrl-n tmux-sessionizer
 
-bind : 'accept-autosuggestion'
+bind : accept-autosuggestion
 
