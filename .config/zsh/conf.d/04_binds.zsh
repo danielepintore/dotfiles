@@ -7,6 +7,9 @@ export KEYTIMEOUT=1
 bindkey -M viins '\e[1;5D' backward-word   # Ctrl+Left in insert mode
 bindkey -M viins '\e[1;5C' forward-word    # Ctrl+Right in insert mode
 
+# ctrl+backspace to delete a word
+bindkey '^H' backward-kill-word
+
 # Edit line in vim with ctrl-e:
 autoload edit-command-line; zle -N edit-command-line; zstyle :zle:edit-command-line editor nvim;
 bindkey '^e' edit-command-line
