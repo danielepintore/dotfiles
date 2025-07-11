@@ -1,3 +1,4 @@
+#!/usr/bin/env zsh
 # nvim alias
 alias vim=nvim
 

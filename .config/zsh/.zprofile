@@ -2,12 +2,7 @@
 # Exaples:
 # export NAME="VALUE"
 # export PATH="$PATH:/newPath"
-export PATH="$PATH:/opt/flutter/bin/"
-export PATH="$PATH:/home/daniele/go/bin/"
-
-export PATH="$PATH:$HOME/.local/scripts/"
-
-export CAPACITOR_ANDROID_STUDIO_PATH="/home/daniele/.local/share/JetBrains/Toolbox/apps/android-studio/bin/studio.sh"
+source "${ZDOTDIR}/conf.d/_env.zsh"
 
 # Launch Hyprland via uwsm
 # Check if we are inside a tmux session
