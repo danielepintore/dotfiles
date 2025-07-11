@@ -14,6 +14,3 @@ alias podrun='podman run -v $(pwd):/chall/ --rm -it registry.fedoraproject.org/f
 
 ## pwninit alias
 alias pwninit='pwninit --template-path /home/daniele/.config/pwninit/pwninit-template.py'
-
-## alias for managing dotfiles
-alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
