@@ -8,7 +8,7 @@ tmux-sessionizer() {
     fi
     
     if [[ -z $selected ]]; then
-        exit -1 
+        return -1 
     fi
     
     selected_name=$(basename "$selected" | tr . _)
