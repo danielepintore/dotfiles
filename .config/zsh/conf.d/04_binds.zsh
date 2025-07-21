@@ -20,6 +20,6 @@ bindkey -v '^R' history-incremental-search-backward
 # Set up fzf key bindings and fuzzy completion
 eval "$(fzf --zsh)"
 
-# tmux-sessionizer
-bindkey -s ^n "tmux-sessionizer\n"
+# project-navigator
+bindkey -s ^n "project-navigator\n"
 
