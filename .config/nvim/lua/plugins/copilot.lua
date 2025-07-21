@@ -1,18 +1,11 @@
 return {
-  "zbirenbaum/copilot-cmp",
-	enabled = false,
-  cmd = "Copilot",
-  event = "InsertEnter",
-	dependencies = {
-		'zbirenbaum/copilot.lua',
-	},
-  config = function()
-		-- Disable inline suggestions and panel
-		require('copilot').setup({
-			suggestion = { enabled = false },
-			panel = { enabled = false },
-		})
-		-- enable suggesions via cmp panel
-		require('copilot_cmp').setup({})
-  end,
+    'zbirenbaum/copilot.lua',
+    enabled = true,
+    cmd = "Copilot",
+    event = "InsertEnter",
+    opts = {
+        suggestion = {
+            auto_trigger = true,
+        },
+    },
 }
