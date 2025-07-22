@@ -1,7 +1,8 @@
 * {
     /* `otf-font-awesome` is required to be installed for icons */
-    font-family: JetBrains Mono Nerd;
-    font-size: 0.85rem;
+    /*font-family: JetBrains Mono Nerd;*/
+    font-family: JetBrainsMono NF;
+    font-size: 0.875rem;
 }
 
 window#waybar {
@@ -89,10 +90,10 @@ button:hover {
 #idle_inhibitor,
 #scratchpad,
 #mpd {
-    border: 2px solid transparent;
-    border-radius: 10px;
+    border: 0px solid transparent;
+    border-radius: 1em;
     color: #ffffff;
-    padding: 0 0.625rem;
+    padding: 0 0.875em;
     background-color: rgba(80, 80, 80, 0.5);
 }
 
@@ -167,11 +168,11 @@ label:focus {
 }
 
 #memory.warning {
-    background-color: #ffa000;
+    background-color: alpha(#ffa000, 0.6);
 }
 
 #memory.critical {
-    background-color: #f53c3c;
+    background-color: alpha(#f53c3c, 0.6);
 }
 
 #disk {

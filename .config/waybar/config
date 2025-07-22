@@ -16,7 +16,7 @@
     //"modules-right": ["tray", "pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "keyboard-state", "sway/language", "battery", "clock", "custom/power"],
     // Modules configuration
     "idle_inhibitor": {
-        "format": "{icon}",
+        "format": "<span size='medium'>{icon} </span>",
         "format-icons": {
             "activated": "",
             "deactivated": ""
@@ -42,11 +42,11 @@
         },
     },
     "cpu": {
-        "format": "{usage}% ",
+        "format": "{usage}% <span size='medium'> </span>",
         "tooltip": false
     },
     "memory": {
-        "format": "{}% ",
+        "format": "{}% <span size='medium'> </span>",
 					"states": {
 						"warning": 80,
 						"critical": 90
@@ -80,19 +80,19 @@
         "format-icons": ["", "", "", "", ""]
     },
     "network": {
-        "format-wifi": "{essid} ({signalStrength}%) ",
-        "format-ethernet": "{ipaddr}/{cidr} ",
-        "tooltip-format": "{ifname} via {gwaddr} ",
-        "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "Disconnected ⚠",
+        "format-wifi": "{essid} ({signalStrength}%) <span size='large'></span> ",
+        "format-ethernet": "Wired <span size='large'></span>",
+        "tooltip-format": "{ifname} via {gwaddr}",
+        "format-linked": "{ifname} (No IP) <span size='large'>󰥗</span>",
+        "format-disconnected": "Disconnected <span size='large'>󰅤 </span>",
         "format-alt": "{ifname}: {ipaddr}/{cidr}",
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
-        "format": "{volume}% {icon}",
+        "format": "{volume}% <span size='medium'>{icon} </span>",
         "format-bluetooth": "{volume}% ",
         "format-bluetooth-muted": "",
-        "format-muted": " ",
+        "format-muted": "ﴓ",
         "format-source": "{volume}% ",
         "format-source-muted": "",
         "format-icons": {
@@ -102,7 +102,7 @@
             "phone": "",
             "portable": "",
             "car": "",
-            "default": [" ", " ", "  "]
+            "default": ["", "", "", ""]
         },
         "on-click": "pavucontrol"
     },
