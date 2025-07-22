@@ -140,8 +140,7 @@ button:hover {
 
 @keyframes blink {
     to {
-        background-color: #ffffff;
-        color: #000000;
+        background-color:alpha(#f53c3c, 0.6);
     }
 }
 
@@ -149,7 +148,7 @@ button:hover {
     background-color: alpha(#f53c3c, 0.2);
     color: #ffffff;
     animation-name: blink;
-    animation-duration: 0.5s;
+    animation-duration: 2s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     animation-direction: alternate;
