@@ -89,6 +89,7 @@
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
+        "reverse-scrolling": true,
         "format": "{volume}% <span size='medium'>{icon} </span>",
         "format-bluetooth": "{volume}% ",
         "format-bluetooth-muted": "",
