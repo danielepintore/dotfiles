@@ -130,9 +130,11 @@ button:hover {
     transition-duration: .5s;
 }
 
+/*
 #battery.charging, #battery.plugged {
-    background-color: alpha(#29ad60, 0.2);
+    background-color: alpha(#29ad60, 0.6);
 }
+*/
 
 #battery.warning:not(.charging){
     background-color: alpha(#ffa000, 0.2);
