@@ -14,6 +14,8 @@ config.font = wezterm.font 'JetBrains Mono'
 -- Theme
 config.color_scheme = 'Grandshell (terminal.sexy)'
 config.force_reverse_video_cursor = true
+config.cursor_blink_ease_in = 'Constant'
+config.cursor_blink_ease_out = 'Constant'
 
 -- Window
 config.window_background_opacity = 0.8
