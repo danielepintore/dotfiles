@@ -80,7 +80,8 @@
         "format-icons": ["", "", "", "", ""]
     },
     "network": {
-        "format-wifi": "{essid} ({signalStrength}%) <span size='large'></span> ",
+        "format-wifi": "{essid} <span size='large'></span> ",
+        //"format-wifi": "{essid} ({signalStrength}%) <span size='large'></span> ",
         "format-ethernet": "Wired <span size='large'></span>",
         "tooltip-format": "{ifname} via {gwaddr}",
         "format-linked": "{ifname} (No IP) <span size='large'>󰥗</span>",
