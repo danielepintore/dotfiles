@@ -20,8 +20,15 @@ config.cursor_blink_ease_out = 'Constant'
 -- Window
 config.window_background_opacity = 0.8
 config.inactive_pane_hsb = { saturation = 0.9, brightness = 0.1 }
+config.window_padding = {
+    left = 0,
+    right = 0,
+    top = 0,
+    bottom = 0,
+}
 
 -- Keymaps
+config.leader = { key = 'a', mods = 'CTRL' }
 config.keys = {
     -- Pane
     { key = '\\',    mods = 'CTRL',       action = act.SplitHorizontal },
@@ -46,13 +53,33 @@ config.keys = {
     -- Tabs
     { key = 'Space', mods = 'CTRL',       action = act.SpawnTab 'CurrentPaneDomain' },
     { key = 't',     mods = 'CTRL|SHIFT', action = act.ShowTabNavigator },
+    { key = 't',     mods = 'LEADER',     action = act.ShowTabNavigator },
     { key = '7',     mods = 'CTRL',       action = act.ActivateTab(0) },
     { key = '8',     mods = 'CTRL',       action = act.ActivateTab(1) },
     { key = '9',     mods = 'CTRL',       action = act.ActivateTab(2) },
     { key = '0',     mods = 'CTRL',       action = act.ActivateTab(3) },
 
     -- Workspaces
-    { key = 'w',     mods = 'CTRL|SHIFT', action = act.ShowLauncherArgs { flags = "WORKSPACES" } },
+    { key = 's',     mods = 'CTRL|SHIFT', action = act.ShowLauncherArgs { flags = "WORKSPACES" } },
+    { key = 's',     mods = 'LEADER',     action = act.ShowLauncherArgs { flags = "WORKSPACES" } },
+    -- Rename current workspace
+    {
+        key = 'r',
+        mods = 'LEADER',
+        action = act.PromptInputLine {
+            description = 'Enter new name for session',
+            action = wezterm.action_callback(
+                function(window, pane, line)
+                    if line then
+                        wezterm.mux.rename_workspace(
+                            window:mux_window():get_workspace(),
+                            line
+                        )
+                    end
+                end
+            ),
+        },
+    },
 }
 
 -- Tab bar
@@ -71,8 +98,8 @@ wezterm.on("update-right-status", function(window, pane)
 
     -- Let's add color to one of the components
     window:set_right_status(wezterm.format({
-        -- Wezterm has a built-in nerd fonts
-        { Text = time },
+        { Text = "[" .. window:active_workspace() .. "] " },
+        { Text = time .. " " },
     }))
 end)
 
