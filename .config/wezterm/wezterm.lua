@@ -14,6 +14,7 @@ config.font = wezterm.font 'JetBrains Mono'
 -- Theme
 config.color_scheme = 'Pastel White (terminal.sexy)'
 config.force_reverse_video_cursor = true
+config.cursor_blink_rate = 0
 config.cursor_blink_ease_in = 'Constant'
 config.cursor_blink_ease_out = 'Constant'
 
