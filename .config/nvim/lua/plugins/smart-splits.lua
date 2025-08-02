@@ -1,6 +1,9 @@
 return {
     'mrjones2014/smart-splits.nvim',
     lazy = false,
+    opts = {
+        disable_multiplexer_nav_when_zoomed = false,
+    },
     keys = {
         { "<C-h>", function() require("smart-splits").move_cursor_left() end },
         { "<C-j>", function() require("smart-splits").move_cursor_down() end },
