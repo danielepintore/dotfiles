@@ -11,8 +11,6 @@ path+=$ANDROID_HOME/tools
 path+=$ANDROID_HOME/tools/bin
 path+=$ANDROID_HOME/platform-tools
 
-export FPATH="$ZDOTDIR/completions:$FPATH"
-
 export EDITOR=nvim
 
 export QT_QPA_PLATFORMTHEME=qt5ct
