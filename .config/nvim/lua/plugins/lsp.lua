@@ -114,7 +114,7 @@ return {
 		},
 
 		opts = {
-			ensure_installed = { 'eslint', 'ts_ls', 'rust_analyzer', 'lua_ls', 'clangd', 'pylsp' },
+			ensure_installed = { 'eslint', 'ts_ls', 'rust_analyzer', 'lua_ls', 'clangd', 'pyright', 'ruff' },
 		},
 	},
 
