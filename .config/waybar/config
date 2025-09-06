@@ -11,16 +11,24 @@
     "modules-left": ["tray"],
     //"modules-left": ["sway/workspaces", "sway/mode", "sway/scratchpad", "custom/media"],
     //"modules-center": [""],
-    "modules-center": ["pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "battery", "idle_inhibitor"],
-		"modules-right": ["clock"],
+    "modules-center": ["pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "battery"],
+		"modules-right": ["idle_inhibitor", "custom/do-not-disturb", "clock"],
     //"modules-right": ["tray", "pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "keyboard-state", "sway/language", "battery", "clock", "custom/power"],
     // Modules configuration
+    "custom/do-not-disturb": { 
+        "exec": "~/.config/waybar/get_dnd_status.sh",
+        "interval": "once",
+        "on-click":"dunstctl set-paused toggle",
+        "return-type": "json"
+    },
     "idle_inhibitor": {
         "format": "<span size='medium'>{icon} </span>",
         "format-icons": {
             "activated": "",
             "deactivated": ""
-        }
+        },
+        "tooltip-format-activated": "Sospensione disabilitata",
+        "tooltip-format-deactivated": "Sospensione abilitata"
     },
     "tray": {
         //"icon-size": 18,

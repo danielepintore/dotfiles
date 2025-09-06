@@ -89,6 +89,7 @@ button:hover {
 #mode,
 #idle_inhibitor,
 #scratchpad,
+#custom-do-not-disturb,
 #mpd {
     border: 0px solid transparent;
     border-radius: 1em;
@@ -230,6 +231,18 @@ label:focus {
 
 #temperature.critical {
     background-color: alpha(#eb4d4b, 0.2);
+}
+
+#custom-do-not-disturb {
+    background-color: rgba(10, 10, 10, 0.2);
+    transition-property: background-color;
+    transition-duration: 1s;
+    padding: 0 0.5rem 0 0.8rem;
+}
+
+#custom-do-not-disturb.active {
+    background-color: alpha(#ecf0f1, 0.8);
+    color: rgb(10, 10, 10);
 }
 
 #tray {
