@@ -11,10 +11,18 @@
     "modules-left": ["tray"],
     //"modules-left": ["sway/workspaces", "sway/mode", "sway/scratchpad", "custom/media"],
     //"modules-center": [""],
-    "modules-center": ["pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "battery"],
+    "modules-center": ["pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "battery", "custom/pacman"],
 		"modules-right": ["idle_inhibitor", "custom/do-not-disturb", "clock"],
     //"modules-right": ["tray", "pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "keyboard-state", "sway/language", "battery", "clock", "custom/power"],
     // Modules configuration
+    "custom/pacman": {
+	    "format": "{text} ",
+	    "interval": 3600,                     // every hour
+	    "exec": "checkupdates | wc -l",       // # of updates
+        "exec-if": "ping -c 1 -W 1 -q archlinux.org >/dev/null 2>&1 && [ $(checkupdates | wc -l) -gt 100 ]",
+        "on-click": "wezterm -e yay",
+        "tooltip-format": "{text} updates available",
+    },
     "custom/do-not-disturb": { 
         "exec": "~/.config/waybar/get_dnd_status.sh",
         "interval": "once",
@@ -90,11 +98,11 @@
     "network": {
         "format-wifi": "{essid} <span size='large'></span> ",
         //"format-wifi": "{essid} ({signalStrength}%) <span size='large'></span> ",
-        "format-ethernet": "Wired <span size='large'></span>",
+        "format-ethernet": "Wired <span size='large'></span> ",
         "tooltip-format": "{ifname} via {gwaddr}",
         "format-linked": "{ifname} (No IP) <span size='large'>󰥗</span>",
         "format-disconnected": "Disconnected <span size='large'>󰅤 </span>",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}",
+        "format-alt": "{ifname}: {ipaddr}/{cidr} <span size='large'></span> ",
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float

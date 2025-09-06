@@ -90,12 +90,13 @@ button:hover {
 #idle_inhibitor,
 #scratchpad,
 #custom-do-not-disturb,
+#custom-pacman,
 #mpd {
     border: 0px solid transparent;
     border-radius: 1em;
     color: #ffffff;
     padding: 0 0.875em;
-    background-color: rgba(80, 80, 80, 0.5);
+    background-color: rgba(10, 10, 10, 0.2);
 }
 
 #window,
@@ -113,20 +114,11 @@ button:hover {
     margin-right: 0;
 }
 
-#custom-power { 
-    background-color: rgba(10, 10, 10, 0.2);
-}
-
 #window {
 		background-color: rgba(80, 80, 80, 0.8);
 }
 
-#clock {
-    background-color: rgba(10, 10, 10, 0.2);
-}
-
 #battery {
-    background-color: rgba(10, 10, 10, 0.2);
     transition-property: background-color;
     transition-duration: .5s;
 }
@@ -161,43 +153,12 @@ label:focus {
     background-color: alpha(#000000, 0.2);
 }
 
-#cpu {
-    background-color: rgba(10, 10, 10, 0.2);
-}
-
-#memory {
-    background-color: rgba(10, 10, 10, 0.2);
-}
-
 #memory.warning {
     background-color: alpha(#ffa000, 0.2);
 }
 
 #memory.critical {
     background-color: alpha(#f53c3c, 0.2);
-}
-
-#disk {
-    background-color: rgba(10, 10, 10, 0.2);
-}
-
-#backlight {
-    background-color: rgba(10, 10, 10, 0.2);
-}
-
-#network {
-    background-color: rgba(10, 10, 10, 0.2);
-}
-
-#network.disconnected {
-    background-color: rgba(10, 10, 10, 0.2);
-}
-
-#pulseaudio {
-    background-color: rgba(10, 10, 10, 0.2);
-}
-
-#pulseaudio.muted {
 }
 
 #wireplumber {
@@ -224,7 +185,6 @@ label:focus {
 }
 
 #temperature {
-    background-color: rgba(10, 10, 10, 0.2);
     transition-property: background-color;
     transition-duration: .5s;
 }
@@ -234,7 +194,6 @@ label:focus {
 }
 
 #custom-do-not-disturb {
-    background-color: rgba(10, 10, 10, 0.2);
     transition-property: background-color;
     transition-duration: 1s;
     padding: 0 0.5rem 0 0.8rem;
@@ -243,10 +202,6 @@ label:focus {
 #custom-do-not-disturb.active {
     background-color: alpha(#ecf0f1, 0.8);
     color: rgb(10, 10, 10);
-}
-
-#tray {
-    background-color: rgba(10, 10, 10, 0.2);
 }
 
 #tray > .passive {
@@ -259,7 +214,6 @@ label:focus {
 }
 
 #idle_inhibitor {
-    background-color: rgba(10, 10, 10, 0.2);
     transition-property: background-color;
     transition-duration: 1s;
 }
