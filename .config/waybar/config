@@ -20,7 +20,8 @@
 	    "interval": 3600,                     // every hour
 	    "exec": "checkupdates | wc -l",       // # of updates
         "exec-if": "ping -c 1 -W 1 -q archlinux.org >/dev/null 2>&1 && [ $(checkupdates | wc -l) -gt 100 ]",
-        "on-click": "wezterm -e yay",
+        "on-click": "wezterm start -- zsh -c 'yay; pkill -SIGRTMIN+8 waybar'",
+        "signal": 8,
         "tooltip-format": "{text} updates available",
     },
     "custom/do-not-disturb": { 
