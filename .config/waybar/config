@@ -19,7 +19,7 @@
 	    "format": "{text} ",
 	    "interval": 3600,                     // every hour
 	    "exec": "checkupdates | wc -l",       // # of updates
-        "exec-if": "[ $(checkupdates | wc -l) -gt 100 ]",
+        "exec-if": "sleep 60 && [ $(checkupdates | wc -l) -gt 100 ]",
         "on-click": "wezterm start -- zsh -c 'yay; pkill -SIGRTMIN+8 waybar'",
         "signal": 8,
         "tooltip-format": "{text} updates available",
