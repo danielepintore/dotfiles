@@ -50,6 +50,7 @@ config.keys = {
 
     -- Vim copy mode
     { key = 'Enter', mods = 'CTRL',       action = act.ActivateCopyMode, },
+    --{ key = 'd',     mods = 'CTRL',       action = act.CopyMode {MoveByPage = 0.5}, },
 
     -- Tabs
     { key = 'Space', mods = 'CTRL',       action = act.SpawnTab 'CurrentPaneDomain' },
@@ -82,6 +83,20 @@ config.keys = {
         },
     },
 }
+
+-- Add custom keybinding to copy_mode
+local key_tables = wezterm.gui.default_key_tables()
+table.insert(key_tables.copy_mode, {
+    key = 'd',
+    mods = 'CTRL',
+    action = act.CopyMode { MoveByPage = 0.5 }
+})
+table.insert(key_tables.copy_mode, {
+    key = 'f',
+    mods = 'CTRL',
+    action = act.CopyMode { MoveByPage = -0.5 }
+})
+config.key_tables = key_tables
 
 -- Tab bar
 config.use_fancy_tab_bar = false
