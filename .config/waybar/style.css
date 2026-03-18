@@ -96,7 +96,7 @@ button:hover {
     border-radius: 1em;
     color: #ffffff;
     padding: 0 0.875em;
-    background-color: rgba(10, 10, 10, 0.2);
+    background-color: rgba(10, 10, 10, 0.4);
 }
 
 #window,
