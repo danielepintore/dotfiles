@@ -27,3 +27,9 @@ vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
 
 vim.opt.colorcolumn = "80"
+
+-- Autocomplete menu settings
+vim.opt.completeopt = { "menuone", "noselect", "popup" }
+vim.opt.autocomplete = true
+vim.opt.complete = "o" -- Include only omnifunc results
+vim.opt.pumheight = 5
