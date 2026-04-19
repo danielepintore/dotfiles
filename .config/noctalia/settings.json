@@ -535,7 +535,7 @@
         "powerOptions": [
             {
                 "action": "lock",
-                "command": "hyprlock",
+                "command": "hyprlock --no-fade-in",
                 "countdownEnabled": true,
                 "enabled": true,
                 "keybind": "1"
