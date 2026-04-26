@@ -31,7 +31,8 @@ return {
         priority = 1000,
         opts = {
             styles = {
-                transparency = true
+                transparency = true,
+                italic = false,
             },
         },
         config = function(_, opts)
