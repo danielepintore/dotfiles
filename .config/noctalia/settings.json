@@ -4,7 +4,7 @@
         "clipboardWatchImageCommand": "wl-paste --type image --watch cliphist store",
         "clipboardWatchTextCommand": "wl-paste --type text --watch cliphist store",
         "clipboardWrapText": true,
-        "customLaunchPrefix": "uwsm app --",
+        "customLaunchPrefix": "uwsm-app --",
         "customLaunchPrefixEnabled": true,
         "density": "default",
         "enableClipPreview": true,
