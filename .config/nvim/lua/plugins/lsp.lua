@@ -72,17 +72,17 @@ return {
                     vim.keymap.set('n', '<leader>f', function() vim.lsp.buf.format { async = true } end, opts)
                     vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, opts)
 
-                    vim.keymap.set('i', '<CR>', function()
-                        return vim.fn.pumvisible() ~= 0 and '<C-y>' or '<CR>'
-                    end, { expr = true, buffer = ev.buf })
-
-                    vim.keymap.set('i', '<Tab>', function()
-                        return vim.fn.pumvisible() ~= 0 and '<C-n>' or '<Tab>'
-                    end, { expr = true, buffer = ev.buf })
-
-                    vim.keymap.set('i', '<S-Tab>', function()
-                        return vim.fn.pumvisible() ~= 0 and '<C-p>' or '<S-Tab>'
-                    end, { expr = true, buffer = ev.buf })
+--                    vim.keymap.set('i', '<CR>', function()
+--                        return vim.fn.pumvisible() ~= 0 and '<C-y>' or '<CR>'
+--                    end, { expr = true, buffer = ev.buf })
+--
+--                     vim.keymap.set('i', '<Tab>', function()
+--                         return vim.fn.pumvisible() ~= 0 and '<C-n>' or '<Tab>'
+--                     end, { expr = true, buffer = ev.buf })
+-- 
+--                     vim.keymap.set('i', '<S-Tab>', function()
+--                         return vim.fn.pumvisible() ~= 0 and '<C-p>' or '<S-Tab>'
+--                     end, { expr = true, buffer = ev.buf })
 
                     vim.keymap.set('i', '<C-k>', function()
                         vim.api.nvim_feedkeys(
