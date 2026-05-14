@@ -16,7 +16,7 @@
         "enableWindowsSearch": true,
         "iconMode": "native",
         "ignoreMouseInput": false,
-        "overviewLayer": false,
+        "overviewLayer": true,
         "pinnedApps": [
         ],
         "position": "center",
@@ -219,7 +219,7 @@
         ],
         "brightnessStep": 5,
         "enableDdcSupport": false,
-        "enforceMinimum": true
+        "enforceMinimum": false
     },
     "calendar": {
         "cards": [
@@ -572,7 +572,7 @@
             },
             {
                 "action": "logout",
-                "command": "",
+                "command": "loginctl terminate-user \"\"",
                 "countdownEnabled": true,
                 "enabled": true,
                 "keybind": "4"
@@ -639,10 +639,6 @@
             {
                 "enabled": true,
                 "id": "zenBrowser"
-            },
-            {
-                "enabled": true,
-                "id": "hyprland"
             }
         ],
         "enableUserTheming": false
