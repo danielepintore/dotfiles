@@ -20,7 +20,6 @@ hl.bind("PRINT", hl.dsp.exec_cmd(utils.uwsm("pkill slurp; sh -c 'IMG=$(xdg-user-
 hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(utils.noctalia_ipc("launcher toggle")))
 hl.bind(mainMod .. " + T", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
-hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))    -- dwindle only
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ action = "toggle" }))
 
 -- Move focus with mainMod + arrow keys
