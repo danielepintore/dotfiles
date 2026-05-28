@@ -76,7 +76,9 @@ hl.bind("XF86MonBrightnessDown",hl.dsp.exec_cmd(utils.noctalia_ipc("brightness d
 hl.bind("XF86MonBrightnessDown",hl.dsp.exec_cmd(utils.noctalia_ipc("brightness decrease")),{ locked = true, repeating = true })
 
 -- Noctalia shutdown menu
-hl.bind(mainMod .. " + Delete",hl.dsp.exec_cmd(utils.noctalia_ipc("sessionMenu toggle")),{ locked = false, repeating = false })
+hl.bind(mainMod .. " + Delete",hl.dsp.exec_cmd(utils.noctalia_ipc("sessionMenu toggle")),{ release = true, locked = false, repeating = false })
+-- Long press for lock screen (prevents accidental presses)
+hl.bind(mainMod .. " + Delete",hl.dsp.exec_cmd(utils.noctalia_ipc("lockScreen lock")),{ long_press = true, locked = false, repeating = false })
 -- Noctalia settings menu
 hl.bind(mainMod .. " + HOME",hl.dsp.exec_cmd(utils.noctalia_ipc("settings toggle")),{ locked = false, repeating = false })
 -- Do not disturb
