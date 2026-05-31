@@ -21,6 +21,7 @@ hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(utils.noctalia_ipc("launcher toggle")
 hl.bind(mainMod .. " + T", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ action = "toggle" }))
+hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(utils.noctalia_ipc("bar toggle")))
 
 -- Move focus with mainMod + arrow keys
 hl.bind(mainMod .. " + left",  hl.dsp.focus({ direction = "left" }))
