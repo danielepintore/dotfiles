@@ -11,7 +11,7 @@ local utils = require("lua/utils")
 
 hl.on("hyprland.start", function ()
   hl.exec_cmd(utils.uwsm("nm-applet"))
-  hl.exec_cmd(utils.uwsm("qs -c noctalia-shell"))
+  hl.exec_cmd(utils.uwsm("noctalia"))
   hl.exec_cmd(utils.uwsm("batsignal -b -e -w 30 -c 20 -d 10 -f 100"))
   hl.exec_cmd(utils.uwsm("blueman-applet"))
   hl.exec_cmd(utils.uwsm("udiskie --tray"))

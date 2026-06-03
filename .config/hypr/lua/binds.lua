@@ -13,15 +13,15 @@ hl.bind(mainMod .. " + M", hl.dsp.exec_cmd(utils.uwsm(defaults.apps.messenger)))
 --hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(utils.uwsm(defaults.apps.fileManager)))
 hl.bind(mainMod .. " + W", hl.dsp.exec_cmd(utils.uwsm(defaults.apps.browser)))
-hl.bind(mainMod .. "+ SHIFT + W", hl.dsp.exec_cmd(utils.noctalia_ipc("wallpaper toggle")))
+hl.bind(mainMod .. "+ SHIFT + W", hl.dsp.exec_cmd("noctalia msg panel-toggle wallpaper"))
 hl.bind(mainMod .. " + S", hl.dsp.exec_cmd(utils.uwsm("sh -c 'IMG=$(xdg-user-dir PICTURES)/Screenshots/$(date +'%s_grim.png') && grim $IMG && wl-copy < $IMG'")))
 hl.bind(mainMod .. "+ SHIFT + S", hl.dsp.exec_cmd(utils.uwsm("sh -c 'IMG=$(xdg-user-dir PICTURES)/Screenshots/$(date +'%s_grim.png') && grim -g \"$(slurp)\" $IMG && wl-copy < $IMG'")))
 hl.bind("PRINT", hl.dsp.exec_cmd(utils.uwsm("pkill slurp; sh -c 'IMG=$(xdg-user-dir PICTURES)/Screenshots/$(date +'%s_grim.png') && grim -g \"$(slurp)\" $IMG && wl-copy < $IMG'")))
-hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(utils.noctalia_ipc("launcher toggle")))
+hl.bind(mainMod .. " + R", hl.dsp.exec_cmd("noctalia msg panel-toggle launcher"))
 hl.bind(mainMod .. " + T", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ action = "toggle" }))
-hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(utils.noctalia_ipc("bar toggle")))
+hl.bind(mainMod .. " + B", hl.dsp.exec_cmd("noctalia msg bar-toggle"))
 
 -- Move focus with mainMod + arrow keys
 hl.bind(mainMod .. " + left",  hl.dsp.focus({ direction = "left" }))
@@ -63,27 +63,26 @@ hl.bind(mainMod .. "+ SHIFT + j", hl.dsp.window.resize({x=0, y=10, relative = tr
 
 -- 
 -- Laptop multimedia keys for volume and LCD brightness
-hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd(utils.noctalia_ipc("volume increase")), { locked = true, repeating = true })
-hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd(utils.noctalia_ipc("volume decrease")), { locked = true, repeating = true })
+hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("noctalia msg volume-up"), { locked = true, repeating = true })
+hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("noctalia msg volume-down"), { locked = true, repeating = true })
 
 -- Mic volume
 hl.bind(mainMod .. " + XF86AudioRaiseVolume", hl.dsp.exec_cmd("amixer -q set Dmic0 3%+"), { locked = true, repeating = true })
 hl.bind(mainMod .. " + XF86AudioLowerVolume", hl.dsp.exec_cmd("amixer -q set Dmic0 3%-"), { locked = true, repeating = true })
 
-hl.bind("XF86AudioMicMute",     hl.dsp.exec_cmd(utils.noctalia_ipc("volume decrease")), { locked = true, repeating = true })
-hl.bind("XF86AudioMute",        hl.dsp.exec_cmd(utils.noctalia_ipc("volume muteOutput")), { locked = true, repeating = true })
-hl.bind("XF86MonBrightnessUp",  hl.dsp.exec_cmd(utils.noctalia_ipc("brightness increase")), { locked = true, repeating = true })
-hl.bind("XF86MonBrightnessDown",hl.dsp.exec_cmd(utils.noctalia_ipc("brightness decrease")), { locked = true, repeating = true })
-hl.bind("XF86MonBrightnessDown",hl.dsp.exec_cmd(utils.noctalia_ipc("brightness decrease")),{ locked = true, repeating = true })
+hl.bind("XF86AudioMicMute",     hl.dsp.exec_cmd("noctalia msg volume-down"), { locked = true, repeating = true })
+hl.bind("XF86AudioMute",        hl.dsp.exec_cmd("noctalia msg volume-mute"), { locked = true, repeating = true })
+hl.bind("XF86MonBrightnessUp",  hl.dsp.exec_cmd("noctalia msg brightness-up"), { locked = true, repeating = true })
+hl.bind("XF86MonBrightnessDown",hl.dsp.exec_cmd("noctalia msg brightness-down"), { locked = true, repeating = true })
 
 -- Noctalia shutdown menu
-hl.bind(mainMod .. " + Delete",hl.dsp.exec_cmd(utils.noctalia_ipc("sessionMenu toggle")),{ release = true, locked = false, repeating = false })
+hl.bind(mainMod .. " + Delete",hl.dsp.exec_cmd("noctalia msg panel-toggle session"),{ release = true, locked = false, repeating = false })
 -- Long press for lock screen (prevents accidental presses)
-hl.bind(mainMod .. " + Delete",hl.dsp.exec_cmd(utils.noctalia_ipc("lockScreen lock")),{ long_press = true, locked = false, repeating = false })
+hl.bind(mainMod .. " + Delete",hl.dsp.exec_cmd("noctalia msg session lock"),{ long_press = true, locked = false, repeating = false })
 -- Noctalia settings menu
-hl.bind(mainMod .. " + HOME",hl.dsp.exec_cmd(utils.noctalia_ipc("settings toggle")),{ locked = false, repeating = false })
+hl.bind(mainMod .. " + HOME",hl.dsp.exec_cmd("noctalia msg settings-toggle"),{ locked = false, repeating = false })
 -- Do not disturb
-hl.bind("XF86NotificationCenter",hl.dsp.exec_cmd(utils.noctalia_ipc("notifications toggleDND")),{ locked = false, repeating = false })
+hl.bind("XF86NotificationCenter",hl.dsp.exec_cmd("noctalia msg notification-dnd-toggle"),{ locked = false, repeating = false })
 
 -- Media controls (requires playerctl)
 hl.bind("XF86Favorites",  hl.dsp.exec_cmd("playerctl next"),       { locked = true })

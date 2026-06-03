@@ -6,3 +6,6 @@ require("lua/theme")
 require("lua/input")
 require("lua/binds")
 require("lua/window_rules")
+
+-- For Noctalia Color templates
+require("noctalia")

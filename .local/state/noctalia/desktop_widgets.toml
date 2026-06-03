@@ -1,0 +1,15 @@
+schema_version = 1
+
+[grid]
+cell_size = 16
+major_interval = 4
+visible = true
+
+[[widget]]
+cx = 816.0
+cy = 128.0
+id = "desktop-widget-0000000000000001"
+output = "eDP-1"
+rotation = 0.0
+scale = 2.3113992214202881
+type = "clock"

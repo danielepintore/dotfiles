@@ -1,0 +1,124 @@
+[bar]
+order = [ "default" ]
+
+    [bar.default]
+    background_opacity = 0.0
+    capsule = true
+    capsule_border = "outline"
+    capsule_fill = "surface"
+    capsule_opacity = 0.5
+    capsule_padding = 9.0
+    end = [ "volume", "brightness", "clipboard", "notifications", "network", "bluetooth", "battery", "control-center" ]
+    margin_edge = 5
+    margin_ends = 0
+    padding = 5
+    shadow = false
+    start = [ "tray", "caffeine", "group:g1" ]
+    thickness = 30
+    widget_spacing = 2
+
+        [[bar.default.capsule_group]]
+        border = "outline"
+        fill = "surface"
+        id = "g1"
+        members = [ "cpu", "temp", "ram", "sysmon" ]
+        opacity = 0.55000001192092896
+        padding = 6.0
+
+[desktop_widgets]
+schema_version = 1
+widget_order = [ "desktop-widget-0000000000000001" ]
+
+    [desktop_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [desktop_widgets.widget.desktop-widget-0000000000000001]
+    cx = 1461.5
+    cy = 919.3074951171875
+    output = "eDP-1"
+    rotation = 0.0
+    scale = 1.2566845417022705
+    type = "clock"
+
+        [desktop_widgets.widget.desktop-widget-0000000000000001.settings]
+        background = true
+        background_opacity = 0.54000000000000004
+
+[notification]
+background_opacity = 0.97999995946884155
+
+[shell]
+font_family = "JetBrainsMono NF"
+screen_time_enabled = true
+settings_show_advanced = true
+
+    [shell.panel]
+    background_opacity = 0.99999997764825821
+    clipboard_placement = "floating"
+    control_center_placement = "floating"
+    launcher_categories = false
+    open_near_click_control_center = true
+    session_placement = "centered"
+    wallpaper_placement = "floating"
+
+[theme]
+builtin = "m3-content"
+community_palette = "Doomed"
+mode = "dark"
+source = "wallpaper"
+wallpaper_scheme = "Doomed"
+
+    [theme.templates]
+    builtin_ids = [ "gtk3", "gtk4", "hyprland", "qt" ]
+
+[wallpaper]
+directory = "/home/daniele/.config/hypr/wallpapers"
+transition = [ "fade" ]
+transition_duration = 300
+
+    [wallpaper.default]
+    path = "/home/daniele/.config/hypr/wallpapers/wwdc-2023-8k-swirls-3840x2160-12596.jpg"
+
+    [wallpaper.last]
+    path = "/home/daniele/.config/hypr/wallpapers/wwdc-2023-8k-swirls-3840x2160-12596.jpg"
+
+    [wallpaper.monitors.eDP-1]
+    path = "/home/daniele/.config/hypr/wallpapers/wwdc-2023-8k-swirls-3840x2160-12596.jpg"
+
+[widget.battery]
+capsule = true
+
+[widget.bongocat]
+script = "scripts/bongocat.lua"
+type = "scripted"
+
+[widget.clock]
+format = "{:%H:%M %a, %b %d}"
+
+[widget.control-center]
+glyph = "baseline-density-medium"
+
+[widget.cpu]
+display = "text"
+
+[widget.ram]
+display = "text"
+
+[widget.screen_recorder]
+script = "scripts/screen_recorder.lua"
+type = "scripted"
+
+[widget.sysmon]
+display = "text"
+stat = "disk_pct"
+
+[widget.temp]
+display = "text"
+
+[widget.tray]
+anchor = true
+drawer = true
+drawer_columns = 5
+hidden = [ "Xwayland Video Bridge_pipewireToXProxy" ]
