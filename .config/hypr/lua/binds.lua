@@ -61,7 +61,15 @@ hl.bind(mainMod .. "+ SHIFT + h", hl.dsp.window.resize({x=-10, y=0, relative = t
 hl.bind(mainMod .. "+ SHIFT + k", hl.dsp.window.resize({x=0, y=-10, relative = true}), { repeating = true })
 hl.bind(mainMod .. "+ SHIFT + j", hl.dsp.window.resize({x=0, y=10, relative = true}), { repeating = true })
 
--- 
+-- Move windows with mainMod + CTRL + vim keys (h/j/k/l)
+hl.bind(mainMod .. " + CTRL + l",  hl.dsp.window.move({ direction = "r" }))
+hl.bind(mainMod .. " + CTRL + h", hl.dsp.window.move({ direction = "l" }))
+hl.bind(mainMod .. " + CTRL + k",    hl.dsp.window.move({ direction = "u" }))
+hl.bind(mainMod .. " + CTRL + j",  hl.dsp.window.move({ direction = "d" }))
+
+-- Layout switching with mainMod + semicolon
+hl.bind(mainMod .. " + semicolon", hl.dsp.layout("rotatesplit"))
+
 -- Laptop multimedia keys for volume and LCD brightness
 hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("noctalia msg volume-up"), { locked = true, repeating = true })
 hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("noctalia msg volume-down"), { locked = true, repeating = true })
