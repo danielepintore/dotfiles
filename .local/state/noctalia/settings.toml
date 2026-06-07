@@ -46,8 +46,8 @@ widget_order = [ "desktop-widget-0000000000000001" ]
         background = true
         background_opacity = 0.54000000000000004
 
-[notification]
-background_opacity = 0.97999995946884155
+[location]
+address = "Cagliari"
 
 [shell]
 font_family = "JetBrainsMono NF"
@@ -63,12 +63,46 @@ settings_show_advanced = true
     session_placement = "centered"
     wallpaper_placement = "floating"
 
+    [[shell.session.actions]]
+    action = "command"
+    command = "hyprlock --no-fade-in"
+    enabled = true
+    glyph = "lock"
+    label = "Lock"
+    shortcut = "1"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "logout"
+    enabled = true
+    shortcut = "2"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "suspend"
+    enabled = true
+    shortcut = "3"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "reboot"
+    enabled = true
+    shortcut = "4"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "shutdown"
+    enabled = true
+    shortcut = "5"
+    variant = "destructive"
+
 [theme]
 builtin = "m3-content"
-community_palette = "Doomed"
+community_palette = "ADW"
+custom_palette = "ADW"
 mode = "dark"
 source = "wallpaper"
-wallpaper_scheme = "Doomed"
+wallpaper_scheme = "Ayu"
 
     [theme.templates]
     builtin_ids = [ "gtk3", "gtk4", "hyprland", "qt" ]
@@ -79,13 +113,13 @@ transition = [ "fade" ]
 transition_duration = 300
 
     [wallpaper.default]
-    path = "/home/daniele/.config/hypr/wallpapers/wwdc-2023-8k-swirls-3840x2160-12596.jpg"
+    path = "/home/daniele/.config/hypr/wallpapers/gradient-background-3840x2160-11027.jpg"
 
     [wallpaper.last]
-    path = "/home/daniele/.config/hypr/wallpapers/wwdc-2023-8k-swirls-3840x2160-12596.jpg"
+    path = "/home/daniele/.config/hypr/wallpapers/gradient-background-3840x2160-11027.jpg"
 
     [wallpaper.monitors.eDP-1]
-    path = "/home/daniele/.config/hypr/wallpapers/wwdc-2023-8k-swirls-3840x2160-12596.jpg"
+    path = "/home/daniele/.config/hypr/wallpapers/gradient-background-3840x2160-11027.jpg"
 
 [widget.battery]
 capsule = true
