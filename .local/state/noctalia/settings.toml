@@ -25,6 +25,14 @@ order = [ "default" ]
         opacity = 0.55000001192092896
         padding = 6.0
 
+[calendar]
+enabled = true
+
+    [calendar.account.subscription_srdnlen]
+    name = "Srdnlen"
+    server_url = "https://calendar.google.com/calendar/ical/ab212014bb50a1d7164949b59351795bbfebea2f64f0ddcf95f02c074937c245%40group.calendar.google.com/private-e5c99bfe4639dea3da05d4687d0d5f74/basic.ics"
+    type = "ics"
+
 [desktop_widgets]
 schema_version = 1
 widget_order = [ "desktop-widget-0000000000000001" ]
@@ -48,6 +56,25 @@ widget_order = [ "desktop-widget-0000000000000001" ]
 
 [location]
 address = "Cagliari"
+
+[lockscreen_widgets]
+enabled = false
+schema_version = 2
+widget_order = [ "lockscreen-login-box@eDP-1" ]
+
+    [lockscreen_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@eDP-1"]
+    box_height = 0.0
+    box_width = 0.0
+    cx = 800.0
+    cy = 877.0
+    output = "eDP-1"
+    rotation = 0.0
+    type = "login_box"
 
 [shell]
 font_family = "JetBrainsMono NF"
@@ -113,13 +140,13 @@ transition = [ "fade" ]
 transition_duration = 300
 
     [wallpaper.default]
-    path = "/home/daniele/.config/hypr/wallpapers/gradient-background-3840x2160-11027.jpg"
+    path = "/home/daniele/.config/hypr/wallpapers/wallhaven-d8w8y3.jpg"
 
     [wallpaper.last]
-    path = "/home/daniele/.config/hypr/wallpapers/gradient-background-3840x2160-11027.jpg"
+    path = "/home/daniele/.config/hypr/wallpapers/wallhaven-d8w8y3.jpg"
 
     [wallpaper.monitors.eDP-1]
-    path = "/home/daniele/.config/hypr/wallpapers/gradient-background-3840x2160-11027.jpg"
+    path = "/home/daniele/.config/hypr/wallpapers/wallhaven-d8w8y3.jpg"
 
 [widget.battery]
 capsule = true
