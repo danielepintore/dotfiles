@@ -13,7 +13,7 @@ order = [ "default" ]
     margin_ends = 0
     padding = 5
     shadow = false
-    start = [ "tray", "caffeine", "group:g1" ]
+    start = [ "tray", "caffeine", "group:g1", "workspaces" ]
     thickness = 30
     widget_spacing = 2
 
@@ -27,6 +27,11 @@ order = [ "default" ]
 
 [calendar]
 enabled = true
+
+    [calendar.account.personal_google]
+    color = "primary"
+    name = "Personal"
+    type = "google"
 
     [calendar.account.subscription_srdnlen]
     name = "Srdnlen"
@@ -53,6 +58,9 @@ widget_order = [ "desktop-widget-0000000000000001" ]
         [desktop_widgets.widget.desktop-widget-0000000000000001.settings]
         background = true
         background_opacity = 0.54000000000000004
+
+[hooks]
+wallpaper_changed = "ln -sf \"$(noctalia msg wallpaper-get)\" ~/.config/hypr/wallpapers/.current-background.jpg"
 
 [location]
 address = "Cagliari"
@@ -129,7 +137,6 @@ community_palette = "ADW"
 custom_palette = "ADW"
 mode = "dark"
 source = "wallpaper"
-wallpaper_scheme = "Ayu"
 
     [theme.templates]
     builtin_ids = [ "gtk3", "gtk4", "hyprland", "qt" ]
@@ -140,13 +147,13 @@ transition = [ "fade" ]
 transition_duration = 300
 
     [wallpaper.default]
-    path = "/home/daniele/.config/hypr/wallpapers/wallhaven-d8w8y3.jpg"
+    path = "/home/daniele/.config/hypr/wallpapers/art-institute-of-chicago-pybByTGQ9zI-unsplash.jpg"
 
     [wallpaper.last]
-    path = "/home/daniele/.config/hypr/wallpapers/wallhaven-d8w8y3.jpg"
+    path = "/home/daniele/.config/hypr/wallpapers/art-institute-of-chicago-pybByTGQ9zI-unsplash.jpg"
 
     [wallpaper.monitors.eDP-1]
-    path = "/home/daniele/.config/hypr/wallpapers/wallhaven-d8w8y3.jpg"
+    path = "/home/daniele/.config/hypr/wallpapers/art-institute-of-chicago-pybByTGQ9zI-unsplash.jpg"
 
 [widget.battery]
 capsule = true
