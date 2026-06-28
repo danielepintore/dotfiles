@@ -5,9 +5,6 @@
 -- See https://wiki.hypr.land/Configuring/Basics/Window-Rules/
 -- and https://wiki.hypr.land/Configuring/Basics/Workspace-Rules/
 
--- Do not draw borders for windows in a workspace with only one tiled window
-hl.window_rule({ match = {workspace="w[t1]" }, border_size = 0 })
-
 -- Ignore maximize requests from all apps. You'll probably like this.
 hl.window_rule({
     name           = "suppress-maximize-events",
