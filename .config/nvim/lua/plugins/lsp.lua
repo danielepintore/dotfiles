@@ -37,7 +37,7 @@ return {
 
             -- Prepare Native Capabilities
             local capabilities = vim.lsp.protocol.make_client_capabilities()
-            capabilities.textDocument.completion.completionItem.snippetSupport = true
+            capabilities.textDocument.completion.completionItem.snippetSupport = false
 
             -- Setup Servers
             require('mason-lspconfig').setup({

@@ -29,10 +29,10 @@ vim.opt.updatetime = 50
 vim.opt.colorcolumn = "80"
 
 -- Autocomplete menu settings
-vim.opt.completeopt = { "menuone", "noselect", "popup" }
+vim.opt.completeopt = { "menuone", "noinsert", "popup" }
 vim.opt.autocomplete = true
 vim.opt.complete = "o" -- Include only omnifunc results
 vim.opt.pumheight = 5
 
 -- Enable the new UI features in Neovim 0.12
-require('vim._core.ui2').enable()
+-- require('vim._core.ui2').enable()
