@@ -8,4 +8,4 @@ require("lua/binds")
 require("lua/window_rules")
 
 -- For Noctalia Color templates
-require("noctalia")
+require("noctalia").apply_theme()
