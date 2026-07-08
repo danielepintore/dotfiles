@@ -5,6 +5,16 @@
 -- See https://wiki.hypr.land/Configuring/Basics/Window-Rules/
 -- and https://wiki.hypr.land/Configuring/Basics/Workspace-Rules/
 
+-- Disable borders on OLED monitor
+hl.workspace_rule({
+    workspace = "m[desc:ASUSTek COMPUTER INC XG27AQWMG W2LMTF013105]",
+    no_border = true,
+    no_rounding = true,
+    decorate = false,
+    gaps_in = 0,
+    gaps_out = 0
+})
+
 -- Ignore maximize requests from all apps. You'll probably like this.
 hl.window_rule({
     name           = "suppress-maximize-events",
@@ -87,7 +97,7 @@ hl.layer_rule({
     match        = { namespace = "waybar" },
     blur         = true,
     ignore_alpha = 0,
-    enabled = false,
+    enabled      = false,
 })
 
 -- Notifications blur with slide animation
@@ -97,5 +107,5 @@ hl.layer_rule({
     blur         = true,
     animation    = "slide",
     ignore_alpha = 0,
-    enabled = false,
+    enabled      = false,
 })
