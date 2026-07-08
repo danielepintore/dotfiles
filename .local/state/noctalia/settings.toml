@@ -12,11 +12,13 @@ order = [ "default" ]
     margin_edge = 5
     margin_ends = 0
     padding = 5
-    scale = 1.2000000104308128
     shadow = false
     start = [ "tray", "caffeine", "group:g1", "workspaces" ]
     thickness = 35
     widget_spacing = 2
+
+        [bar.default.monitor."ASUSTek COMPUTER INC XG27AQWMG W2LMTF013105"]
+        auto_hide = true
 
         [[bar.default.capsule_group]]
         border = "outline"
@@ -25,6 +27,9 @@ order = [ "default" ]
         members = [ "cpu", "temp", "ram", "sysmon" ]
         opacity = 0.55000001192092896
         padding = 6.0
+
+[brightness]
+enable_ddcutil = true
 
 [calendar]
 enabled = true
@@ -90,16 +95,55 @@ enabled = false
 [lockscreen_widgets]
 enabled = true
 schema_version = 2
-widget_order = [ "lockscreen-login-box@eDP-1", "lockscreen-widget-0000000000000001" ]
+widget_order = [
+    "lockscreen-login-box@HDMI-A-5",
+    "lockscreen-login-box@DP-3",
+    "lockscreen-login-box@eDP-1",
+    "lockscreen-widget-0000000000000001"
+]
 
     [lockscreen_widgets.grid]
     cell_size = 16
     major_interval = 4
     visible = true
 
+    [lockscreen_widgets.widget."lockscreen-login-box@DP-3"]
+    box_height = 70.0
+    box_width = 400.0
+    cx = 1280.0
+    cy = 1321.0
+    output = "DP-3"
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@DP-3".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        input_opacity = 1.0
+        input_radius = 6.0
+        show_login_button = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-5"]
+    box_height = 70.0
+    box_width = 400.0
+    cx = 960.0
+    cy = 961.0
+    output = "HDMI-A-5"
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-5".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        input_opacity = 1.0
+        input_radius = 6.0
+        show_login_button = true
+
     [lockscreen_widgets.widget."lockscreen-login-box@eDP-1"]
-    box_height = 0.0
-    box_width = 0.0
+    box_height = 70.0
+    box_width = 400.0
     cx = 800.0
     cy = 788.0
     output = "eDP-1"
