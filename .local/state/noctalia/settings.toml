@@ -19,6 +19,8 @@ order = [ "default" ]
 
         [bar.default.monitor."ASUSTek COMPUTER INC XG27AQWMG W2LMTF013105"]
         auto_hide = true
+        reserve_space = false
+        show_on_workspace_switch = false
 
         [[bar.default.capsule_group]]
         border = "outline"
@@ -241,10 +243,16 @@ transition = [ "fade" ]
 transition_duration = 300
 
     [wallpaper.default]
-    path = "/home/daniele/.config/hypr/wallpapers/continental-down.jpg"
+    path = "/home/daniele/.config/hypr/wallpapers/wwdc-2023-8k-swirls-3840x2160-12596.jpg"
 
     [wallpaper.last]
-    path = "/home/daniele/.config/hypr/wallpapers/continental-down.jpg"
+    path = "/home/daniele/.config/hypr/wallpapers/wwdc-2023-8k-swirls-3840x2160-12596.jpg"
+
+    [wallpaper.monitors.DP-3]
+    path = "/home/daniele/.config/hypr/wallpapers/wwdc-2023-8k-swirls-3840x2160-12596.jpg"
+
+    [wallpaper.monitors.HDMI-A-5]
+    path = "/home/daniele/.config/hypr/wallpapers/wwdc-2023-8k-swirls-3840x2160-12596.jpg"
 
     [wallpaper.monitors.eDP-1]
     path = "/home/daniele/.config/hypr/wallpapers/continental-down.jpg"
