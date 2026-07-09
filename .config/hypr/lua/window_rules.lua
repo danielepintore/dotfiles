@@ -12,7 +12,20 @@ hl.workspace_rule({
     no_rounding = true,
     decorate = false,
     gaps_in = 0,
-    gaps_out = 0
+    gaps_out = 0,
+})
+
+hl.workspace_rule({
+    workspace = "1",
+    monitor = "desc:ASUSTek COMPUTER INC XG27AQWMG W2LMTF013105",
+    default = true,
+})
+
+hl.workspace_rule({
+    workspace = "11",
+    monitor = "desc:HP Inc. HP 24w CNC8261SFL",
+    layout = "scrolling",
+    default = true,
 })
 
 -- Ignore maximize requests from all apps. You'll probably like this.

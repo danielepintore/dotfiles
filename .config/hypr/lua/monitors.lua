@@ -6,16 +6,15 @@
 hl.monitor({
     output   = "desc:ASUSTek COMPUTER INC XG27AQWMG W2LMTF013105",
     mode     = "2560x1440@280",
-    position = "auto",
+    position = "0x0",
     scale    = "auto",
-    cm       = "wide",
     bitdepth = 10,
 })
 
 hl.monitor({
     output   = "desc:HP Inc. HP 24w CNC8261SFL",
     mode     = "1920x1080@60",
-    position = "auto",
+    position = "2560x0",
     scale    = "auto",
 })
 
