@@ -1,3 +1,5 @@
+config_version = 2
+
 [bar]
 order = [ "default" ]
 
@@ -19,6 +21,7 @@ order = [ "default" ]
 
         [bar.default.monitor."ASUSTek COMPUTER INC XG27AQWMG W2LMTF013105"]
         auto_hide = true
+        center = [ "clock", "disable_secondary_monitor" ]
         reserve_space = false
         show_on_workspace_switch = false
 
@@ -45,6 +48,24 @@ enabled = true
     name = "Srdnlen"
     server_url = "https://calendar.google.com/calendar/ical/ab212014bb50a1d7164949b59351795bbfebea2f64f0ddcf95f02c074937c245%40group.calendar.google.com/private-e5c99bfe4639dea3da05d4687d0d5f74/basic.ics"
     type = "ics"
+
+[[control_center.shortcuts]]
+type = "wifi"
+
+[[control_center.shortcuts]]
+type = "bluetooth"
+
+[[control_center.shortcuts]]
+type = "caffeine"
+
+[[control_center.shortcuts]]
+type = "notification"
+
+[[control_center.shortcuts]]
+type = "power_profile"
+
+[[control_center.shortcuts]]
+type = "dark_mode"
 
 [desktop_widgets]
 schema_version = 1
@@ -98,6 +119,7 @@ enabled = false
 enabled = true
 schema_version = 2
 widget_order = [
+    "lockscreen-login-box@DP-5",
     "lockscreen-login-box@HDMI-A-5",
     "lockscreen-login-box@DP-3",
     "lockscreen-login-box@eDP-1",
@@ -124,7 +146,30 @@ widget_order = [
         background_radius = 12.0
         input_opacity = 1.0
         input_radius = 6.0
+        show_caps_lock = true
+        show_keyboard_layout = true
         show_login_button = true
+        show_password_hint = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@DP-5"]
+    box_height = 70.0
+    box_width = 400.0
+    cx = 1280.0
+    cy = 1321.0
+    output = "DP-5"
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@DP-5".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        input_opacity = 1.0
+        input_radius = 6.0
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_password_hint = true
 
     [lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-5"]
     box_height = 70.0
@@ -141,7 +186,10 @@ widget_order = [
         background_radius = 12.0
         input_opacity = 1.0
         input_radius = 6.0
+        show_caps_lock = true
+        show_keyboard_layout = true
         show_login_button = true
+        show_password_hint = true
 
     [lockscreen_widgets.widget."lockscreen-login-box@eDP-1"]
     box_height = 70.0
@@ -158,7 +206,10 @@ widget_order = [
         background_radius = 12.0
         input_opacity = 1.0
         input_radius = 6.0
+        show_caps_lock = true
+        show_keyboard_layout = true
         show_login_button = true
+        show_password_hint = true
 
     [lockscreen_widgets.widget.lockscreen-widget-0000000000000001]
     box_height = 192.0
@@ -175,6 +226,7 @@ widget_order = [
         shadow = false
 
 [shell]
+avatar_path = "/home/daniele/.config/avatar.png"
 font_family = "JetBrainsMono NF"
 launch_apps_custom_command = "uwsm-app -- $CMD"
 screen_time_enabled = true
@@ -227,10 +279,10 @@ settings_show_advanced = true
     variant = "destructive"
 
 [theme]
-builtin = "m3-content"
-community_palette = "ADW"
-custom_palette = "ADW"
+builtin = "Ayu"
+community_palette = "Tokyo Night Moon"
 mode = "dark"
+pure_black_dark = true
 source = "wallpaper"
 wallpaper_scheme = "m3-rainbow"
 
@@ -242,20 +294,48 @@ directory = "/home/daniele/.config/hypr/wallpapers"
 transition = [ "fade" ]
 transition_duration = 300
 
+    [wallpaper.automation]
+    enabled = true
+
     [wallpaper.default]
-    path = "/home/daniele/.config/hypr/wallpapers/wwdc-2023-8k-swirls-3840x2160-12596.jpg"
+    path = "/home/daniele/.config/hypr/wallpapers/Abstract 1.jpg"
 
     [wallpaper.last]
-    path = "/home/daniele/.config/hypr/wallpapers/wwdc-2023-8k-swirls-3840x2160-12596.jpg"
+    path = "/home/daniele/.config/hypr/wallpapers/Abstract 1.jpg"
 
     [wallpaper.monitors.DP-3]
     path = "/home/daniele/.config/hypr/wallpapers/wwdc-2023-8k-swirls-3840x2160-12596.jpg"
 
+    [wallpaper.monitors.DP-5]
+    path = "/home/daniele/.config/hypr/wallpapers/Abstract 1.jpg"
+
     [wallpaper.monitors.HDMI-A-5]
-    path = "/home/daniele/.config/hypr/wallpapers/wwdc-2023-8k-swirls-3840x2160-12596.jpg"
+    path = "/home/daniele/.config/hypr/wallpapers/abstract-square-glass-forms-3d-y5-3840x2160.jpg"
 
     [wallpaper.monitors.eDP-1]
     path = "/home/daniele/.config/hypr/wallpapers/continental-down.jpg"
+
+    [[wallpaper.favorite]]
+    palette_source = "wallpaper"
+    path = "/home/daniele/.config/hypr/wallpapers/wwdc-2023-8k-swirls-3840x2160-12596.jpg"
+    theme_mode = "dark"
+    wallpaper_scheme = "m3-rainbow"
+
+    [[wallpaper.favorite]]
+    path = "/home/daniele/.config/hypr/wallpapers/Mac-Pro-macOS-Catalina-Wallpaper.jpg"
+    theme_mode = "auto"
+
+    [[wallpaper.favorite]]
+    palette_source = "wallpaper"
+    path = "/home/daniele/.config/hypr/wallpapers/abstract-square-glass-forms-3d-y5-3840x2160.jpg"
+    theme_mode = "dark"
+    wallpaper_scheme = "m3-rainbow"
+
+    [[wallpaper.favorite]]
+    palette_source = "wallpaper"
+    path = "/home/daniele/.config/hypr/wallpapers/colorful-3d-shapes-of-abstract-au-3840x2160.jpg"
+    theme_mode = "dark"
+    wallpaper_scheme = "m3-content"
 
 [widget.battery]
 capsule = true
@@ -272,6 +352,10 @@ glyph = "baseline-density-medium"
 
 [widget.cpu]
 display = "text"
+
+[widget.disable_secondary_monitor]
+glyph = "device-desktop"
+type = "custom_button"
 
 [widget.ram]
 display = "text"
