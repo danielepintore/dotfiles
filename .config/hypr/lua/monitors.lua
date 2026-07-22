@@ -16,6 +16,7 @@ hl.monitor({
     mode     = "1920x1080@60",
     position = "2560x0",
     scale    = "auto",
+    disabled = true,
 })
 
 -- Thinkpad x1 carbon monitor
