@@ -19,7 +19,7 @@ config.cursor_blink_ease_in = 'Constant'
 config.cursor_blink_ease_out = 'Constant'
 
 -- Window
-config.window_background_opacity = 0.8
+config.window_background_opacity = 0.9
 config.inactive_pane_hsb = { saturation = 0.9, brightness = 0.1 }
 config.window_padding = {
     left = 0,
