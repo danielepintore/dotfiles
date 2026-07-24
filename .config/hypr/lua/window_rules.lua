@@ -104,13 +104,13 @@ hl.layer_rule({
     enabled      = false,
 })
 
--- Waybar blur
+-- Remove noctalia bar blur
 hl.layer_rule({
-    name         = "waybar-blur",
-    match        = { namespace = "waybar" },
-    blur         = true,
+    name         = "noctalia-bar-blur",
+    match        = { namespace = "noctalia-bar-default" },
+    blur         = false,
     ignore_alpha = 0,
-    enabled      = false,
+    enabled      = true,
 })
 
 -- Notifications blur with slide animation
