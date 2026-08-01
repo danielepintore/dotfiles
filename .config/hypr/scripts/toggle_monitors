@@ -1,0 +1,32 @@
+#!/usr/bin/env python3
+import sys
+import re
+
+if len(sys.argv) != 3:
+    print(f"Usage: {sys.argv[0]} <config_file.lua> <monitor_substring>")
+    sys.exit(1)
+
+file_path = sys.argv[1]
+target = sys.argv[2]
+
+with open(file_path, 'r') as f:
+    data = f.read()
+
+def toggle_state(match):
+    block = match.group(0)
+    # Only modify the block if it contains the target monitor description
+    if target in block:
+        if 'disabled = true' in block:
+            return block.replace('disabled = true', 'disabled = false')
+        elif 'disabled = false' in block:
+            return block.replace('disabled = false', 'disabled = true')
+        else:
+            # If the disabled key does not exist, append it before the closing bracket
+            return block.replace('\n})', ',\n    disabled = true\n})')
+    return block
+
+# Find all hl.monitor({...}) blocks and apply the toggle function
+new_data = re.sub(r'hl\.monitor\(\{.*?\}\)', toggle_state, data, flags=re.DOTALL)
+
+with open(file_path, 'w') as f:
+    f.write(new_data)

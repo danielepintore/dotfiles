@@ -1,4 +1,4 @@
-config_version = 2
+config_version = 8
 
 [bar]
 order = [ "default" ]
@@ -21,9 +21,10 @@ order = [ "default" ]
 
         [bar.default.monitor."ASUSTek COMPUTER INC XG27AQWMG W2LMTF013105"]
         auto_hide = true
-        center = [ "clock", "disable_secondary_monitor" ]
+        center = [ "clock" ]
         reserve_space = false
         show_on_workspace_switch = false
+        start = [ "tray", "caffeine", "disable_secondary_monitor", "group:g1", "workspaces" ]
 
         [[bar.default.capsule_group]]
         border = "outline"
@@ -151,7 +152,6 @@ widget_order = [
         show_caps_lock = true
         show_keyboard_layout = true
         show_login_button = true
-        show_password_hint = true
 
     [lockscreen_widgets.widget."lockscreen-login-box@DP-5"]
     box_height = 70.0
@@ -171,7 +171,6 @@ widget_order = [
         show_caps_lock = true
         show_keyboard_layout = true
         show_login_button = true
-        show_password_hint = true
 
     [lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-5"]
     box_height = 70.0
@@ -191,7 +190,6 @@ widget_order = [
         show_caps_lock = true
         show_keyboard_layout = true
         show_login_button = true
-        show_password_hint = true
 
     [lockscreen_widgets.widget."lockscreen-login-box@eDP-1"]
     box_height = 70.0
@@ -211,7 +209,6 @@ widget_order = [
         show_caps_lock = true
         show_keyboard_layout = true
         show_login_button = true
-        show_password_hint = true
 
     [lockscreen_widgets.widget.lockscreen-widget-0000000000000001]
     box_height = 192.0
@@ -300,19 +297,19 @@ transition_duration = 300
     enabled = true
 
     [wallpaper.default]
-    path = "/home/daniele/.config/hypr/wallpapers/Light Stream Pink.JPG"
+    path = "/home/daniele/.config/hypr/wallpapers/chainsaw-man-war-devil-colored.jpg"
 
     [wallpaper.last]
-    path = "/home/daniele/.config/hypr/wallpapers/Light Stream Pink.JPG"
+    path = "/home/daniele/.config/hypr/wallpapers/chainsaw-man-war-devil-colored.jpg"
 
     [wallpaper.monitors.DP-3]
     path = "/home/daniele/.config/hypr/wallpapers/wwdc-2023-8k-swirls-3840x2160-12596.jpg"
 
     [wallpaper.monitors.DP-5]
-    path = "/home/daniele/.config/hypr/wallpapers/Abstract 1.jpg"
+    path = "/home/daniele/.config/hypr/wallpapers/chainsaw-man-war-devil-colored.jpg"
 
     [wallpaper.monitors.HDMI-A-5]
-    path = "/home/daniele/.config/hypr/wallpapers/abstract-square-glass-forms-3d-y5-3840x2160.jpg"
+    path = "/home/daniele/.config/hypr/wallpapers/chainsaw-man-war-devil-colored.jpg"
 
     [wallpaper.monitors.eDP-1]
     path = "/home/daniele/.config/hypr/wallpapers/Light Stream Pink.JPG"
@@ -357,7 +354,11 @@ display = "text"
 
 [widget.disable_secondary_monitor]
 glyph = "device-desktop"
+tooltip = "Toggles the secondary monitor"
 type = "custom_button"
+
+    [widget.disable_secondary_monitor.actions]
+    left = "exec ~/.config/hypr/scripts/toggle_monitors ~/.config/hypr/lua/monitors.lua HP"
 
 [widget.ram]
 display = "text"
