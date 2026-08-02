@@ -264,8 +264,14 @@ local function update_overlay()
     end
     local url = base_url.."&searchTerm="..user_query
     local json = send_request("GET", url)
-    if json == nil or #json.Items == 0 then --no results
-        items = send_request("GET", base_url).Items
+    if json == nil or json.Items == nil or #json.Items == 0 then --no results
+        local fallback = send_request("GET", base_url)
+        if fallback == nil or fallback.Items == nil then
+            overlay.data = "{\\fs16}Connection Error: Server unreachable or Auth failed."
+            overlay:update()
+            return
+        end
+        items = fallback.Items
     else
         items = json.Items
     end
