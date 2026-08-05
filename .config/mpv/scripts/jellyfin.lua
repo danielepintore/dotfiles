@@ -459,7 +459,7 @@ end
 local function check_percent()
     local pos = mp.get_property_number("percent-pos")
     if pos == nil then return end
-    if pos <= 94 then return end
+    if pos <= 89 then return end
     local item = get_playing_item()
     if item == nil then return end
     local UserData = item.UserData -- pointer
