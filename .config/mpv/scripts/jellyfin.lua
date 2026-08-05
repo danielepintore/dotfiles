@@ -66,18 +66,27 @@ local function mkdir(path)
     end
 end
 
-local function send_request(method, url)
+
+local function send_request(method, url, max_retries)
+    max_retries = max_retries or 3
     if #api_key > 0 then
-        local start_time = mp.get_time()
-        local request = mp.command_native({
-            name = "subprocess",
-            capture_stdout = true,
-            capture_stderr = true,
-            playback_only = false,
-            args = {"curl", "-X", method, url, "-H", "Authorization: MediaBrowser Token=\""..api_key.."\""}
-        })
-        msg.debug(string.format("Waited %.3f seconds for response from Jellyfin server", mp.get_time() - start_time))
-        return utils.parse_json(request.stdout)
+        for attempt = 1, max_retries do
+            local start_time = mp.get_time()
+            local request = mp.command_native({
+                name = "subprocess",
+                capture_stdout = true,
+                capture_stderr = true,
+                playback_only = false,
+                args = {"curl", "-sS", "-X", method, url, "-H", "Authorization: MediaBrowser Token=\""..api_key.."\""}
+            })
+
+            local result = utils.parse_json(request.stdout)
+            if result then
+                msg.debug(string.format("Waited %.3f seconds for response", mp.get_time() - start_time))
+                return result
+            end
+            msg.warn("Request failed, retrying... (" .. attempt .. "/" .. max_retries .. ")")
+        end
     end
     return nil
 end
@@ -86,13 +95,27 @@ local function clear_request(success, result, error)
     async[2] = nil
 end
 
-local function send_request_async(method, url)
-    if #api_key > 0 and async[2] == nil then -- multiple requests are just discarded
-        async[2] = mp.command_native_async({
-            name = "subprocess",
-            playback_only = false,
-            args = {"curl", "-X", method, url, "-H", "Authorization: MediaBrowser Token=\""..api_key.."\""}
-        }, function(success, result, error) clear_request(success, result, error) end)
+local function send_request_async(method, url, max_retries)
+    max_retries = max_retries or 3
+    if #api_key > 0 and async[2] == nil then
+
+        local function do_request(retries_left)
+            async[2] = mp.command_native_async({
+                name = "subprocess",
+                playback_only = false,
+                args = {"curl", "-sS", "-X", method, url, "-H", "Authorization: MediaBrowser Token=\""..api_key.."\""}
+            }, function(success, result, error)
+                -- Check for failure (curl exit status != 0 or script execution failure)
+                if (not success or result.status ~= 0) and retries_left > 0 then
+                    msg.warn("Async request failed, retrying. Attempts left: " .. (retries_left - 1))
+                    do_request(retries_left - 1)
+                else
+                    clear_request(success, result, error)
+                end
+            end)
+        end
+
+        do_request(max_retries)
         return 0
     end
     return 1
