@@ -174,6 +174,11 @@ function api.get_additional_parts(item_id)
     return result and result.Items or nil
 end
 
+--- Clears items cache
+function api.clear_cache()
+    items_cache = {}
+end
+
 --- Async request to mark an item as played on Jellyfin server
 ---@param item_id string
 ---@param on_success function|nil
@@ -184,7 +189,24 @@ function api.mark_played_async(item_id, on_success)
     network.async_post(url, nil, nil, 3, function(err)
         msg.warn("Failed to mark item as played: " .. tostring(err))
     end, function(res)
+        api.clear_cache()
         msg.info("Marked item " .. item_id .. " as played.")
+        if on_success then on_success() end
+    end)
+end
+
+--- Async request to mark an item as unplayed on Jellyfin server
+---@param item_id string
+---@param on_success function|nil
+function api.mark_unplayed_async(item_id, on_success)
+    local session = config.getSessionData()
+    if not session.UserId or not item_id then return end
+    local url = utils.make_url("/Users/" .. session.UserId .. "/PlayedItems/" .. item_id)
+    network.async_delete(url, nil, 3, function(err)
+        msg.warn("Failed to mark item as unplayed: " .. tostring(err))
+    end, function(res)
+        api.clear_cache()
+        msg.info("Marked item " .. item_id .. " as unplayed.")
         if on_success then on_success() end
     end)
 end

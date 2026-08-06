@@ -252,6 +252,31 @@ local function key_left()
     if align_x == 3 then move_right() else move_left() end
 end
 
+local function toggle_watched()
+    if #items == 0 then return end
+    local item = items[selection[layer]]
+    if not item or not item.Id then return end
+
+    if not item.UserData then
+        item.UserData = {}
+    end
+
+    local is_played = item.UserData.Played == true
+    if is_played then
+        item.UserData.Played = false
+        ui.update_data()
+        api.mark_unplayed_async(item.Id, function()
+            player.show_popup("Marked as unwatched", 2)
+        end)
+    else
+        item.UserData.Played = true
+        ui.update_data()
+        api.mark_played_async(item.Id, function()
+            player.show_popup("Marked as watched", 2)
+        end)
+    end
+end
+
 --- Toggles UI overlays and keybindings
 function ui.toggle()
     if shown then
@@ -268,6 +293,7 @@ function ui.toggle()
         mp.remove_key_binding("jselect_enter")
         mp.remove_key_binding("jselect_space")
         mp.remove_key_binding("jback")
+        mp.remove_key_binding("jtoggle_watched")
 
         image.remove()
         if overlay then overlay:remove() end
@@ -286,6 +312,7 @@ function ui.toggle()
         mp.add_forced_key_binding("ENTER", "jselect_enter", move_right)
         mp.add_forced_key_binding("SPACE", "jselect_space", move_right)
         mp.add_forced_key_binding("BS", "jback", move_left)
+        mp.add_forced_key_binding("w", "jtoggle_watched", toggle_watched)
 
         local session = config.getSessionData()
         if not session.ApiKey or session.ApiKey == "" then
