@@ -3,7 +3,7 @@
 local mp = require 'mp'
 local msg = require 'mp.msg'
 local utils = require 'utils'
-local config = require 'config'
+local session = require 'session'
 
 local network = {}
 
@@ -17,9 +17,9 @@ end
 ---@return table
 local function prepare_headers(headers)
     headers = headers or {}
-    local session = config.getSessionData()
-    if session.ApiKey and session.ApiKey ~= "" and not headers["Authorization"] then
-        headers["Authorization"] = 'MediaBrowser Token="' .. session.ApiKey .. '"'
+    local session_data = session.getSessionData()
+    if session_data.ApiKey and session_data.ApiKey ~= "" and not headers["Authorization"] then
+        headers["Authorization"] = 'MediaBrowser Token="' .. session_data.ApiKey .. '"'
     end
     return headers
 end
@@ -157,24 +157,23 @@ function network.sync_delete(url, headers, max_retries, fallback_fn)
     return sync_request("DELETE", url, nil, headers, max_retries, fallback_fn)
 end
 
-function network.async_get(url, headers, max_retries, fallback_fn, on_success)
+function network.async_get(url, headers, max_retries, on_success, fallback_fn)
     return async_request("GET", url, nil, headers, max_retries, on_success, fallback_fn)
 end
 
-function network.async_post(url, body, headers, max_retries, fallback_fn, on_success)
+function network.async_post(url, body, headers, max_retries, on_success, fallback_fn)
     return async_request("POST", url, body, headers, max_retries, on_success, fallback_fn)
 end
 
-function network.async_put(url, body, headers, max_retries, fallback_fn, on_success)
+function network.async_put(url, body, headers, max_retries, on_success, fallback_fn)
     return async_request("PUT", url, body, headers, max_retries, on_success, fallback_fn)
 end
 
-function network.async_patch(url, body, headers, max_retries, fallback_fn, on_success)
+function network.async_patch(url, body, headers, max_retries, on_success, fallback_fn)
     return async_request("PATCH", url, body, headers, max_retries, on_success, fallback_fn)
 end
-
-function network.async_delete(url, headers, max_retries, fallback_fn, on_success)
-    return async_request("DELETE", url, nil, headers, max_retries, fallback_fn, on_success)
+function network.async_delete(url, headers, max_retries, on_success, fallback_fn)
+    return async_request("DELETE", url, nil, headers, max_retries, on_success, fallback_fn)
 end
 
 return network

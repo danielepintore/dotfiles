@@ -3,6 +3,7 @@ local msg = require 'mp.msg'
 local utils = require 'utils'
 local mp_utils = require 'mp.utils'
 local config = require 'config'
+local session = require 'session'
 
 local api = {}
 local items_cache = {}
@@ -38,7 +39,7 @@ function api.login(username, password)
         return false
     end
 
-    config.setSessionData(result.User.Id, result.AccessToken)
+    session.setSessionData(result.User.Id, result.AccessToken)
     msg.info("Jellyfin auth successful for user: " .. tostring(result.User.Name or username))
     return true
 end
@@ -48,9 +49,9 @@ end
 ---@return table|nil
 function api.get_item_by_id(item_id)
     if not item_id or item_id == "" then return nil end
-    local session = config.getSessionData()
-    if not session.UserId then return nil end
-    local url = utils.make_url("/Items/" .. item_id, { userID = session.UserId })
+    local session_data = session.getSessionData()
+    if not session_data.UserId then return nil end
+    local url = utils.make_url("/Items/" .. item_id, { userID = session_data.UserId })
     local response, err = network.sync_get(url)
     if not response then return nil end
     return mp_utils.parse_json(response)
@@ -63,8 +64,8 @@ end
 ---@param search_term string|nil
 ---@return table|nil items, string|nil err
 function api.get_items(parent_id, sort_mode, layer, search_term)
-    local session = config.getSessionData()
-    if not session.UserId then
+    local session_data = session.getSessionData()
+    if not session_data.UserId then
         return nil, "Auth failed: Not logged in."
     end
 
@@ -75,7 +76,7 @@ function api.get_items(parent_id, sort_mode, layer, search_term)
     end
 
     local params = {
-        userID = session.UserId,
+        userID = session_data.UserId,
         parentId = parent_id or "",
         enableImageTypes = "Primary",
         imageTypeLimit = "1",
@@ -84,19 +85,22 @@ function api.get_items(parent_id, sort_mode, layer, search_term)
 
     if sort_mode == 1 then
         params.sortBy = "PremiereDate"
-    elseif layer == 2 then
+    elseif sort_mode == 2 then
         params.sortBy = "SortName"
     end
 
     local search_query = (search_term and search_term ~= "") and search_term or nil
     if search_query then
         params.searchTerm = search_query
+        params.recursive = "true"
     end
 
     local url = utils.make_url("/Items", params)
     local response, err = network.sync_get(url)
 
     if not response then
+        msg.warn("Auth might have expired, clearing session...")
+        session.clearSessionData()
         return nil, "Connection Error: Server unreachable or Auth failed."
     end
 
@@ -183,15 +187,15 @@ end
 ---@param item_id string
 ---@param on_success function|nil
 function api.mark_played_async(item_id, on_success)
-    local session = config.getSessionData()
-    if not session.UserId or not item_id then return end
-    local url = utils.make_url("/Users/" .. session.UserId .. "/PlayedItems/" .. item_id)
-    network.async_post(url, nil, nil, 3, function(err)
-        msg.warn("Failed to mark item as played: " .. tostring(err))
-    end, function(res)
+    local session_data = session.getSessionData()
+    if not session_data.UserId or not item_id then return end
+    local url = utils.make_url("/Users/" .. session_data.UserId .. "/PlayedItems/" .. item_id)
+    network.async_post(url, nil, nil, 3, function(res)
         api.clear_cache()
         msg.info("Marked item " .. item_id .. " as played.")
         if on_success then on_success() end
+    end, function(err)
+        msg.warn("Failed to mark item as played: " .. tostring(err))
     end)
 end
 
@@ -199,15 +203,15 @@ end
 ---@param item_id string
 ---@param on_success function|nil
 function api.mark_unplayed_async(item_id, on_success)
-    local session = config.getSessionData()
-    if not session.UserId or not item_id then return end
-    local url = utils.make_url("/Users/" .. session.UserId .. "/PlayedItems/" .. item_id)
-    network.async_delete(url, nil, 3, function(err)
-        msg.warn("Failed to mark item as unplayed: " .. tostring(err))
-    end, function(res)
+    local session_data = session.getSessionData()
+    if not session_data.UserId or not item_id then return end
+    local url = utils.make_url("/Users/" .. session_data.UserId .. "/PlayedItems/" .. item_id)
+    network.async_delete(url, nil, 3, function(res)
         api.clear_cache()
         msg.info("Marked item " .. item_id .. " as unplayed.")
         if on_success then on_success() end
+    end, function(err)
+        msg.warn("Failed to mark item as unplayed: " .. tostring(err))
     end)
 end
 
@@ -222,7 +226,7 @@ function api.report_playing_started(item_id, position_ticks)
         PositionTicks = math.floor(position_ticks or 0),
         PlayMethod = "DirectPlay",
     }
-    network.async_post(url, mp_utils.format_json(payload), nil, 1, function(err) end, function(res) end)
+    network.async_post(url, mp_utils.format_json(payload), nil, 1, function(res) end, function(err) end)
 end
 
 --- Reports periodic playback progress to Jellyfin
@@ -239,7 +243,7 @@ function api.report_playing_progress(item_id, position_ticks, is_paused)
         PlayMethod = "DirectPlay",
         EventName = is_paused and "pause" or "timeupdate",
     }
-    network.async_post(url, mp_utils.format_json(payload), nil, 1, function(err) end, function(res) end)
+    network.async_post(url, mp_utils.format_json(payload), nil, 1, function(res) end, function(err) end)
 end
 
 --- Reports playback stopped to Jellyfin
@@ -253,7 +257,7 @@ function api.report_playing_stopped(item_id, position_ticks)
         PositionTicks = math.floor(position_ticks or 0),
         PlayMethod = "DirectPlay",
     }
-    network.async_post(url, mp_utils.format_json(payload), nil, 1, function(err) end, function(res) end)
+    network.async_post(url, mp_utils.format_json(payload), nil, 1, function(res) end, function(err) end)
 end
 
 --- Returns video stream URL for playback

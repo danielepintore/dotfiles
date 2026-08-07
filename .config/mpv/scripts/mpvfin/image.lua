@@ -35,7 +35,8 @@ local function on_image_ready(success, result, error, userdata, is_shown_fn)
         return
     end
 
-    local width, height, filepath, align_x, align_y, ow, oh, dw, dh = unpack(userdata)
+---@diagnostic disable-next-line: deprecated
+    local width, height, filepath, align_x, align_y, ow, oh, dw, dh = (table.unpack or unpack)(userdata)
 
     local margin_x = 40
     local margin_y = 40

@@ -119,7 +119,6 @@ function player.play_video(items, selection_idx, on_overlay_hide)
         table.insert(active_playlist_items, item)
     end
 
-    mp.commandv("playlist-play-index", "none")
     mp.command("playlist-clear")
 
     if config.use_playlist ~= "off" then

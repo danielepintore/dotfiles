@@ -1,6 +1,7 @@
 local mp = require 'mp'
 local msg = require 'mp.msg'
 local config = require 'config'
+local session = require 'session'
 local utils = require 'utils'
 local api = require 'api'
 local image = require 'image'
@@ -24,8 +25,8 @@ local user_query = ""
 local ow, oh, op = 0, 0, 0
 
 local align_x = 1 -- 1 = left, 2 = center, 3 = right
-local align_y = 4 -- 4 = top, 8 = center, 0 = bottom
-local align_other = "{\\a7}"
+local align_y = 6 -- 6 = top, 3 = center, 0 = bottom
+local align_other = "{\\an9}"
 
 --- Returns whether UI overlay is currently shown
 ---@return boolean
@@ -41,7 +42,7 @@ end
 
 --- Alignment calculation helper
 local function set_align()
-    align_other = "{\\a" .. ((4 - align_x) + align_y) .. "}"
+    align_other = "{\\an" .. ((4 - align_x) + align_y) .. "}"
 end
 
 --- Formats metadata overlay for selected item (Top-Right section)
@@ -138,10 +139,31 @@ end
 --- Fetches items from Jellyfin server and updates overlay view
 function ui.update_overlay()
     if not overlay then return end
+
+    local session_data = session.getSessionData()
+    if not session_data.ApiKey or session_data.ApiKey == "" then
+        overlay.data = "{\\fs16}Authenticating..."
+        overlay:update()
+        api.login()
+    end
+
     overlay.data = "{\\fs16}Loading..."
     overlay:update()
 
     local result_items, err = api.get_items(parent_id[layer], config.sort_mode, layer, user_query)
+    
+    -- If request failed and api.lua cleared our session, attempt a seamless re-login exactly once
+    if err ~= nil or result_items == nil then
+        local current_session = session.getSessionData()
+        if not current_session.ApiKey or current_session.ApiKey == "" then
+            overlay.data = "{\\fs16}Session Expired. Re-authenticating..."
+            overlay:update()
+            if api.login() then
+                result_items, err = api.get_items(parent_id[layer], config.sort_mode, layer, user_query)
+            end
+        end
+    end
+
     if err ~= nil or result_items == nil then
         overlay.data = "{\\fs16}" .. (err or "Connection Error: Server unreachable or Auth failed.")
         overlay:update()
@@ -314,8 +336,8 @@ function ui.toggle()
         mp.add_forced_key_binding("BS", "jback", move_left)
         mp.add_forced_key_binding("w", "jtoggle_watched", toggle_watched)
 
-        local session = config.getSessionData()
-        if not session.ApiKey or session.ApiKey == "" then
+        local session_data = session.getSessionData()
+        if not session_data.ApiKey or session_data.ApiKey == "" then
             if overlay then
                 overlay.data = "{\\fs16}Authenticating..."
                 overlay:update()
@@ -343,7 +365,7 @@ end
 ---@param query string|nil
 function ui.search(query)
     if query then
-        user_query = utils.url_fix(query) .. "&recursive=true"
+        user_query = query
         shown = false
         items = {}
         ui.toggle()
@@ -382,9 +404,9 @@ function ui.on_align_y_change(name, data)
     if data == "bottom" then
         align_y = 0
     elseif data == "center" then
-        align_y = 8
+        align_y = 3
     else
-        align_y = 4
+        align_y = 6
     end
     set_align()
 end

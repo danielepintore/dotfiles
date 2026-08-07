@@ -5,18 +5,20 @@ local msg = require 'mp.msg'
 package.path = mp.command_native({"expand-path", "~~/script-modules/?.lua;"}) .. package.path
 
 local config = require 'config'
-local utils = require 'utils'
-local network = require 'network'
-local api = require 'api'
 local image = require 'image'
 local player = require 'player'
 local ui = require 'ui'
 
 -- Version check
 local mpv_ver_str = mp.get_property("mpv-version") or ""
-local version_num = tonumber(string.sub(mpv_ver_str, 8, 11)) or 999.0
+local version_ok = false
+local major, minor = mpv_ver_str:match("(%d+)%.(%d+)")
+if major and minor then
+    local ver = tonumber(major) + tonumber(minor) / 100
+    version_ok = (ver >= 0.38)
+end
 
-if version_num < 38.0 then
+if not version_ok then
     msg.error("Minimum mpv version (0.38.0) not met for mpvfin script.")
 else
     image.init()

@@ -16,7 +16,7 @@ function utils.make_url(resource, params)
         local query_parts = {}
         for k, v in pairs(params) do
             if v ~= nil and v ~= "" then
-                table.insert(query_parts, k .. "=" .. tostring(v))
+                table.insert(query_parts, k .. "=" .. utils.url_encode(tostring(v)))
             end
         end
         if #query_parts > 0 then
@@ -27,12 +27,17 @@ function utils.make_url(resource, params)
     return url
 end
 
---- Replaces space characters with %20 for URL encoding
+--- URL-encodes a string
 ---@param str string|nil
 ---@return string
-function utils.url_fix(str)
+function utils.url_encode(str)
     if not str then return "" end
-    return (str:gsub(" ", "%%20"))
+    str = string.gsub(str, "\n", "\r\n")
+    str = string.gsub(str, "([^%w %-%_%.%~])", function(c)
+        return string.format("%%%02X", string.byte(c))
+    end)
+    str = string.gsub(str, " ", "%%20")
+    return str
 end
 
 --- Breaks long text strings into multiple lines with ASS formatting flags
@@ -88,6 +93,10 @@ end
 ---@param seconds number
 function utils.sleep(seconds)
     local os_family = mp.get_property_native("options/os-family")
+    if not os_family then
+        local is_windows = package.config:sub(1,1) == "\\"
+        os_family = is_windows and "windows" or "linux"
+    end
     local sleep_args
     if os_family == "windows" then
         sleep_args = { "timeout", "/t", tostring(seconds), "/nobreak" }
