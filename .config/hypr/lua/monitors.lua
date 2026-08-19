@@ -9,7 +9,7 @@ hl.monitor({
     position = "0x0",
     scale    = "auto",
     bitdepth = 10,
-    vrr      = 3,
+--    vrr      = 3,
 })
 
 hl.monitor({
