@@ -27,3 +27,9 @@ hl.monitor({
     position = "auto",
     scale    = "1.00",
 })
+
+hl.config({
+    render = {
+        cm_auto_hdr = true,
+    }
+})
