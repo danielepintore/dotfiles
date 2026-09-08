@@ -15,6 +15,16 @@ hl.workspace_rule({
     gaps_out = 0,
 })
 
+hl.window_rule({
+    match = {
+        float = true,
+        workspace = "m[desc:ASUSTek COMPUTER INC XG27AQWMG W2LMTF013105]"
+    },
+    rounding = 10,
+    border_size = 1,
+    decorate = true,
+})
+
 hl.workspace_rule({
     workspace = "1",
     monitor = "desc:ASUSTek COMPUTER INC XG27AQWMG W2LMTF013105",
