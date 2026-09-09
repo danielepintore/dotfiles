@@ -1,4 +1,4 @@
-config_version = 8
+config_version = 14
 
 [bar]
 order = [ "default" ]
@@ -24,7 +24,7 @@ order = [ "default" ]
         center = [ "clock" ]
         reserve_space = false
         show_on_workspace_switch = false
-        start = [ "tray", "caffeine", "disable_secondary_monitor", "group:g1", "workspaces" ]
+        start = [ "tray", "caffeine", "disable_secondary_monitor", "disable_all_leds", "group:g1", "workspaces" ]
 
         [[bar.default.capsule_group]]
         border = "outline"
@@ -122,6 +122,8 @@ enabled = false
 enabled = true
 schema_version = 2
 widget_order = [
+    "lockscreen-login-box@DP-4",
+    "lockscreen-login-box@FALLBACK",
     "lockscreen-login-box@DP-5",
     "lockscreen-login-box@HDMI-A-5",
     "lockscreen-login-box@DP-3",
@@ -135,11 +137,13 @@ widget_order = [
     visible = true
 
     [lockscreen_widgets.widget."lockscreen-login-box@DP-3"]
-    box_height = 70.0
-    box_width = 400.0
+    box_height = 196.0
+    box_width = 720.0
     cx = 1280.0
     cy = 1321.0
     output = "DP-3"
+    placement_height = 0.0
+    placement_width = 0.0
     rotation = 0.0
     type = "login_box"
 
@@ -147,18 +151,53 @@ widget_order = [
         background_color = "surface_variant"
         background_opacity = 0.88
         background_radius = 12.0
+        center_password_text = false
         input_opacity = 1.0
         input_radius = 6.0
+        layout = "regular"
         show_caps_lock = true
         show_keyboard_layout = true
         show_login_button = true
+        show_media = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@DP-4"]
+    box_height = 196.0
+    box_width = 810.0
+    cx = 1280.0
+    cy = 1258.0
+    output = "DP-4"
+    placement_height = 1440.0
+    placement_width = 2560.0
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@DP-4".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_media = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
 
     [lockscreen_widgets.widget."lockscreen-login-box@DP-5"]
-    box_height = 70.0
-    box_width = 400.0
+    box_height = 196.0
+    box_width = 720.0
     cx = 1280.0
     cy = 1321.0
     output = "DP-5"
+    placement_height = 1440.0
+    placement_width = 2560.0
     rotation = 0.0
     type = "login_box"
 
@@ -166,18 +205,53 @@ widget_order = [
         background_color = "surface_variant"
         background_opacity = 0.88
         background_radius = 12.0
+        center_password_text = false
         input_opacity = 1.0
         input_radius = 6.0
+        layout = "regular"
         show_caps_lock = true
         show_keyboard_layout = true
         show_login_button = true
+        show_media = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@FALLBACK"]
+    box_height = 196.0
+    box_width = 810.0
+    cx = 960.0
+    cy = 898.0
+    output = "FALLBACK"
+    placement_height = 1080.0
+    placement_width = 1920.0
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@FALLBACK".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_media = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
 
     [lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-5"]
-    box_height = 70.0
-    box_width = 400.0
+    box_height = 196.0
+    box_width = 720.0
     cx = 960.0
     cy = 961.0
     output = "HDMI-A-5"
+    placement_height = 1080.0
+    placement_width = 1920.0
     rotation = 0.0
     type = "login_box"
 
@@ -185,18 +259,26 @@ widget_order = [
         background_color = "surface_variant"
         background_opacity = 0.88
         background_radius = 12.0
+        center_password_text = false
         input_opacity = 1.0
         input_radius = 6.0
+        layout = "regular"
         show_caps_lock = true
         show_keyboard_layout = true
         show_login_button = true
+        show_media = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
 
     [lockscreen_widgets.widget."lockscreen-login-box@eDP-1"]
-    box_height = 70.0
-    box_width = 400.0
+    box_height = 196.0
+    box_width = 720.0
     cx = 800.0
     cy = 788.0
     output = "eDP-1"
+    placement_height = 0.0
+    placement_width = 0.0
     rotation = 0.0
     type = "login_box"
 
@@ -204,11 +286,17 @@ widget_order = [
         background_color = "surface_variant"
         background_opacity = 0.88
         background_radius = 12.0
+        center_password_text = false
         input_opacity = 1.0
         input_radius = 6.0
+        layout = "regular"
         show_caps_lock = true
         show_keyboard_layout = true
         show_login_button = true
+        show_media = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
 
     [lockscreen_widgets.widget.lockscreen-widget-0000000000000001]
     box_height = 192.0
@@ -216,6 +304,8 @@ widget_order = [
     cx = 800.0
     cy = 180.0
     output = "eDP-1"
+    placement_height = 0.0
+    placement_width = 0.0
     rotation = 0.0
     type = "clock"
 
@@ -283,7 +373,7 @@ community_palette = "Tokyo Night Moon"
 mode = "dark"
 pure_black_dark = true
 source = "wallpaper"
-wallpaper_scheme = "m3-rainbow"
+wallpaper_scheme = "m3-content"
 
     [theme.templates]
     builtin_ids = [ "gtk3", "gtk4", "hyprland", "qt" ]
@@ -295,21 +385,25 @@ transition_duration = 300
 
     [wallpaper.automation]
     enabled = true
+    interval_seconds = 480
 
     [wallpaper.default]
-    path = "/home/daniele/.config/hypr/wallpapers/chainsaw-man-war-devil-colored.jpg"
+    path = "/home/daniele/.config/hypr/wallpapers/iMacPro3.png"
 
     [wallpaper.last]
-    path = "/home/daniele/.config/hypr/wallpapers/chainsaw-man-war-devil-colored.jpg"
+    path = "/home/daniele/.config/hypr/wallpapers/iMacPro3.png"
 
     [wallpaper.monitors.DP-3]
     path = "/home/daniele/.config/hypr/wallpapers/wwdc-2023-8k-swirls-3840x2160-12596.jpg"
 
+    [wallpaper.monitors.DP-4]
+    path = "/home/daniele/.config/hypr/wallpapers/wp15376865-marathon-game-wallpapers.jpg"
+
     [wallpaper.monitors.DP-5]
-    path = "/home/daniele/.config/hypr/wallpapers/chainsaw-man-war-devil-colored.jpg"
+    path = "/home/daniele/.config/hypr/wallpapers/iMacPro3.png"
 
     [wallpaper.monitors.HDMI-A-5]
-    path = "/home/daniele/.config/hypr/wallpapers/chainsaw-man-war-devil-colored.jpg"
+    path = "/home/daniele/.config/hypr/wallpapers/purple-flowers-floral-background-beautiful-blossom-garden-3840x2160-3322.jpg"
 
     [wallpaper.monitors.eDP-1]
     path = "/home/daniele/.config/hypr/wallpapers/Light Stream Pink.JPG"
@@ -321,8 +415,10 @@ transition_duration = 300
     wallpaper_scheme = "m3-rainbow"
 
     [[wallpaper.favorite]]
+    builtin_palette = "Ayu"
+    palette_source = "builtin"
     path = "/home/daniele/.config/hypr/wallpapers/Mac-Pro-macOS-Catalina-Wallpaper.jpg"
-    theme_mode = "auto"
+    theme_mode = "dark"
 
     [[wallpaper.favorite]]
     palette_source = "wallpaper"
@@ -333,6 +429,34 @@ transition_duration = 300
     [[wallpaper.favorite]]
     palette_source = "wallpaper"
     path = "/home/daniele/.config/hypr/wallpapers/colorful-3d-shapes-of-abstract-au-3840x2160.jpg"
+    theme_mode = "dark"
+    wallpaper_scheme = "m3-content"
+
+    [[wallpaper.favorite]]
+    palette_source = "wallpaper"
+    path = "/home/daniele/.config/hypr/wallpapers/wallhaven-bleach-orehime.jpg"
+    theme_mode = "dark"
+    wallpaper_scheme = "m3-rainbow"
+
+    [[wallpaper.favorite]]
+    path = "/home/daniele/.config/hypr/wallpapers/wallhaven-qrgvll.png"
+    theme_mode = "auto"
+
+    [[wallpaper.favorite]]
+    palette_source = "wallpaper"
+    path = "/home/daniele/.config/hypr/wallpapers/Flower 2.jpg"
+    theme_mode = "dark"
+    wallpaper_scheme = "m3-rainbow"
+
+    [[wallpaper.favorite]]
+    palette_source = "wallpaper"
+    path = "/home/daniele/.config/hypr/wallpapers/Flower 1.jpg"
+    theme_mode = "dark"
+    wallpaper_scheme = "m3-rainbow"
+
+    [[wallpaper.favorite]]
+    palette_source = "wallpaper"
+    path = "/home/daniele/.config/hypr/wallpapers/wallhaven-3q282d.jpg"
     theme_mode = "dark"
     wallpaper_scheme = "m3-content"
 
@@ -352,6 +476,15 @@ glyph = "baseline-density-medium"
 [widget.cpu]
 display = "text"
 
+[widget.disable_all_leds]
+glyph = "media-play"
+tooltip = "Open Jellyfin"
+type = "custom_button"
+
+    [widget.disable_all_leds.actions]
+    left = "exec openrgb -p off && flatpak run com.github.iwalton3.jellyfin-mpv-shim"
+    right = "exec openrgb -p stealth --noautoconnect"
+
 [widget.disable_secondary_monitor]
 glyph = "device-desktop"
 tooltip = "Toggles the secondary monitor"
@@ -368,8 +501,9 @@ script = "scripts/screen_recorder.lua"
 type = "scripted"
 
 [widget.sysmon]
-display = "text"
+show_value = true
 stat = "disk_used_pct"
+visualization = "none"
 
 [widget.temp]
 display = "text"
