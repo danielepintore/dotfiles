@@ -84,6 +84,8 @@ widget_order = [ "desktop-widget-0000000000000001" ]
     cx = 1807.0
     cy = 1127.5
     output = "eDP-1"
+    placement_height = 1200.0
+    placement_width = 1920.0
     rotation = 0.0
     type = "clock"
 
@@ -277,8 +279,8 @@ widget_order = [
     cx = 800.0
     cy = 788.0
     output = "eDP-1"
-    placement_height = 0.0
-    placement_width = 0.0
+    placement_height = 1200.0
+    placement_width = 1920.0
     rotation = 0.0
     type = "login_box"
 
@@ -304,8 +306,8 @@ widget_order = [
     cx = 800.0
     cy = 180.0
     output = "eDP-1"
-    placement_height = 0.0
-    placement_width = 0.0
+    placement_height = 1200.0
+    placement_width = 1920.0
     rotation = 0.0
     type = "clock"
 
