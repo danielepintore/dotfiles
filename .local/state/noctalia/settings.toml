@@ -41,6 +41,12 @@ enable_ddcutil = true
 [calendar]
 enabled = true
 
+    [calendar.account.lezioni_unica_26_1]
+    color = "on_error"
+    name = "Lezioni Unica 26"
+    server_url = "https://unica.danielepintore.it/calendar/MjAyNi8zNDMzNTdfUzEueG1sfDIwMjYvMzQzMzQ3X1MxLnhtbHwyMDI2LzM0MzM1OV9TMS54bWx8MjAyNi8zNDMzNThfUzEueG1sfDIwMjYvMzQzMzUxX1MxLnhtbHwyMDI2LzM0MzM2MF9TMS54bWx8MjAyNi8zNDMzNDZfUzEueG1s"
+    type = "ics"
+
     [calendar.account.personal_google]
     color = "primary"
     name = "Personal"
@@ -71,27 +77,14 @@ type = "dark_mode"
 
 [desktop_widgets]
 schema_version = 1
-widget_order = [ "desktop-widget-0000000000000001" ]
+widget_order = []
 
     [desktop_widgets.grid]
     cell_size = 16
     major_interval = 4
     visible = true
 
-    [desktop_widgets.widget.desktop-widget-0000000000000001]
-    box_height = 0.0
-    box_width = 0.0
-    cx = 1807.0
-    cy = 1127.5
-    output = "eDP-1"
-    placement_height = 1200.0
-    placement_width = 1920.0
-    rotation = 0.0
-    type = "clock"
-
-        [desktop_widgets.widget.desktop-widget-0000000000000001.settings]
-        background = true
-        background_opacity = 0.54000000000000004
+    [desktop_widgets.widget]
 
 [hooks]
 wallpaper_changed = "ln -sf \"$(noctalia msg wallpaper-get)\" ~/.config/hypr/wallpapers/.current-background.jpg"
@@ -390,10 +383,10 @@ transition_duration = 300
     interval_seconds = 480
 
     [wallpaper.default]
-    path = "/home/daniele/.config/hypr/wallpapers/iMacPro3.png"
+    path = "/home/daniele/.config/hypr/wallpapers/SpaceGray.png"
 
     [wallpaper.last]
-    path = "/home/daniele/.config/hypr/wallpapers/iMacPro3.png"
+    path = "/home/daniele/.config/hypr/wallpapers/SpaceGray.png"
 
     [wallpaper.monitors.DP-3]
     path = "/home/daniele/.config/hypr/wallpapers/wwdc-2023-8k-swirls-3840x2160-12596.jpg"
@@ -408,7 +401,7 @@ transition_duration = 300
     path = "/home/daniele/.config/hypr/wallpapers/purple-flowers-floral-background-beautiful-blossom-garden-3840x2160-3322.jpg"
 
     [wallpaper.monitors.eDP-1]
-    path = "/home/daniele/.config/hypr/wallpapers/Light Stream Pink.JPG"
+    path = "/home/daniele/.config/hypr/wallpapers/SpaceGray.png"
 
     [[wallpaper.favorite]]
     palette_source = "wallpaper"
