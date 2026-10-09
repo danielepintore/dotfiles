@@ -24,7 +24,7 @@ order = [ "default" ]
         center = [ "clock" ]
         reserve_space = false
         show_on_workspace_switch = false
-        start = [ "tray", "caffeine", "disable_secondary_monitor", "disable_all_leds", "group:g1", "workspaces" ]
+        start = [ "tray", "caffeine", "disable_secondary_monitor", "group:g1", "workspaces" ]
 
         [[bar.default.capsule_group]]
         border = "outline"
@@ -95,23 +95,24 @@ behavior_order = [ "lock", "screen-off", "lock-and-suspend" ]
     [idle.behavior.lock]
     action = "lock"
     enabled = false
-    timeout = 60
+    timeout = 300.0
 
     [idle.behavior.lock-and-suspend]
     action = "lock_and_suspend"
     enabled = false
-    timeout = 90
+    timeout = 90.0
 
     [idle.behavior.screen-off]
     action = "screen_off"
     enabled = false
-    timeout = 66
+    timeout = 60.0
 
 [location]
 address = "Cagliari"
 
 [lockscreen]
-enabled = false
+transition = [ "fade" ]
+transition_duration = 500
 
 [lockscreen_widgets]
 enabled = true
@@ -123,7 +124,8 @@ widget_order = [
     "lockscreen-login-box@HDMI-A-5",
     "lockscreen-login-box@DP-3",
     "lockscreen-login-box@eDP-1",
-    "lockscreen-widget-0000000000000001"
+    "lockscreen-widget-0000000000000001",
+    "lockscreen-widget-0000000000000002"
 ]
 
     [lockscreen_widgets.grid]
@@ -186,8 +188,8 @@ widget_order = [
         show_weather = true
 
     [lockscreen_widgets.widget."lockscreen-login-box@DP-5"]
-    box_height = 196.0
-    box_width = 720.0
+    box_height = 82.0
+    box_width = 810.0
     cx = 1280.0
     cy = 1321.0
     output = "DP-5"
@@ -207,10 +209,10 @@ widget_order = [
         show_caps_lock = true
         show_keyboard_layout = true
         show_login_button = true
-        show_media = true
-        show_session_buttons = true
-        show_unlock_hint = true
-        show_weather = true
+        show_media = false
+        show_session_buttons = false
+        show_unlock_hint = false
+        show_weather = false
 
     [lockscreen_widgets.widget."lockscreen-login-box@FALLBACK"]
     box_height = 196.0
@@ -309,10 +311,26 @@ widget_order = [
         clock_style = "digital"
         shadow = false
 
+    [lockscreen_widgets.widget.lockscreen-widget-0000000000000002]
+    box_height = 192.0
+    box_width = 384.0
+    cx = 1280.0
+    cy = 304.0
+    output = "DP-5"
+    placement_height = 1440.0
+    placement_width = 2560.0
+    rotation = 0.0
+    type = "clock"
+
+        [lockscreen_widgets.widget.lockscreen-widget-0000000000000002.settings]
+        background = false
+        shadow = false
+
 [shell]
 avatar_path = "/home/daniele/.config/avatar.png"
 font_family = "JetBrainsMono NF"
 launch_apps_custom_command = "uwsm-app -- $CMD"
+polkit_agent = true
 screen_time_enabled = true
 settings_show_advanced = true
 
@@ -329,44 +347,12 @@ settings_show_advanced = true
     session_position = "center"
     wallpaper_placement = "floating"
 
-    [[shell.session.actions]]
-    action = "command"
-    command = "hyprlock --no-fade-in"
-    enabled = true
-    glyph = "lock"
-    label = "Lock"
-    shortcut = "1"
-    variant = "default"
-
-    [[shell.session.actions]]
-    action = "logout"
-    enabled = true
-    shortcut = "2"
-    variant = "default"
-
-    [[shell.session.actions]]
-    action = "suspend"
-    enabled = true
-    shortcut = "3"
-    variant = "default"
-
-    [[shell.session.actions]]
-    action = "reboot"
-    enabled = true
-    shortcut = "4"
-    variant = "default"
-
-    [[shell.session.actions]]
-    action = "shutdown"
-    enabled = true
-    shortcut = "5"
-    variant = "destructive"
-
 [theme]
 builtin = "Ayu"
 community_palette = "Tokyo Night Moon"
 mode = "dark"
 pure_black_dark = true
+shell_mode = "dark"
 source = "wallpaper"
 wallpaper_scheme = "m3-content"
 
@@ -383,10 +369,10 @@ transition_duration = 300
     interval_seconds = 480
 
     [wallpaper.default]
-    path = "/home/daniele/.config/hypr/wallpapers/SpaceGray.png"
+    path = "/home/daniele/.config/hypr/wallpapers/wallhaven-6lyv5x.png"
 
     [wallpaper.last]
-    path = "/home/daniele/.config/hypr/wallpapers/SpaceGray.png"
+    path = "/home/daniele/.config/hypr/wallpapers/wallhaven-6lyv5x.png"
 
     [wallpaper.monitors.DP-3]
     path = "/home/daniele/.config/hypr/wallpapers/wwdc-2023-8k-swirls-3840x2160-12596.jpg"
@@ -395,7 +381,7 @@ transition_duration = 300
     path = "/home/daniele/.config/hypr/wallpapers/wp15376865-marathon-game-wallpapers.jpg"
 
     [wallpaper.monitors.DP-5]
-    path = "/home/daniele/.config/hypr/wallpapers/iMacPro3.png"
+    path = "/home/daniele/.config/hypr/wallpapers/wallhaven-6lyv5x.png"
 
     [wallpaper.monitors.HDMI-A-5]
     path = "/home/daniele/.config/hypr/wallpapers/purple-flowers-floral-background-beautiful-blossom-garden-3840x2160-3322.jpg"
@@ -470,15 +456,6 @@ glyph = "baseline-density-medium"
 
 [widget.cpu]
 display = "text"
-
-[widget.disable_all_leds]
-glyph = "media-play"
-tooltip = "Open Jellyfin"
-type = "custom_button"
-
-    [widget.disable_all_leds.actions]
-    left = "exec openrgb -p off && flatpak run com.github.iwalton3.jellyfin-mpv-shim"
-    right = "exec openrgb -p stealth --noautoconnect"
 
 [widget.disable_secondary_monitor]
 glyph = "device-desktop"
