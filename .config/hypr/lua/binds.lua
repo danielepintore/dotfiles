@@ -93,6 +93,10 @@ hl.bind(mainMod .. " + HOME",hl.dsp.exec_cmd("noctalia msg settings-toggle"),{ l
 hl.bind("XF86NotificationCenter",hl.dsp.exec_cmd("noctalia msg notification-dnd-toggle"),{ locked = false, repeating = false })
 
 -- Media controls (requires playerctl)
+hl.bind("XF86AudioNext",  hl.dsp.exec_cmd("playerctl next"),       { locked = true })
+hl.bind("XF86AudioPlay",  hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
+hl.bind("XF86AudioPrev",  hl.dsp.exec_cmd("playerctl previous"),   { locked = true })
+-- Thinkpad media controls
 hl.bind("XF86Favorites",  hl.dsp.exec_cmd("playerctl next"),       { locked = true })
 hl.bind("XF86HangupPhone",  hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
 hl.bind("XF86PickupPhone",  hl.dsp.exec_cmd("playerctl previous"),   { locked = true })
