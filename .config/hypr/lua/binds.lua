@@ -91,6 +91,7 @@ hl.bind(mainMod .. " + Delete",hl.dsp.exec_cmd("hyprlock --no-fade-in"),{ long_p
 hl.bind(mainMod .. " + HOME",hl.dsp.exec_cmd("noctalia msg settings-toggle"),{ locked = false, repeating = false })
 -- Do not disturb
 hl.bind("XF86NotificationCenter",hl.dsp.exec_cmd("noctalia msg notification-dnd-toggle"),{ locked = false, repeating = false })
+hl.bind("XF86Tools",hl.dsp.exec_cmd("noctalia msg notification-dnd-toggle"),{ locked = false, repeating = false })
 
 -- Media controls (requires playerctl)
 hl.bind("XF86AudioNext",  hl.dsp.exec_cmd("playerctl next"),       { locked = true })
