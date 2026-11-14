@@ -1,4 +1,4 @@
-config_version = 15
+config_version = 16
 
 [bar]
 order = [ "default" ]
@@ -6,7 +6,7 @@ order = [ "default" ]
     [bar.default]
     background_opacity = 0.0
     capsule = true
-    capsule_border = "outline"
+    capsule_border = "outline_variant"
     capsule_fill = "surface"
     capsule_opacity = 0.5
     capsule_padding = 9.0
@@ -27,7 +27,7 @@ order = [ "default" ]
         start = [ "tray", "caffeine", "disable_secondary_monitor", "group:g1", "workspaces" ]
 
         [[bar.default.capsule_group]]
-        border = "outline"
+        border = "outline_variant"
         enabled = true
         fill = "surface"
         id = "g1"
@@ -90,22 +90,22 @@ widget_order = []
 wallpaper_changed = "ln -sf \"$(noctalia msg wallpaper-get)\" ~/.config/hypr/wallpapers/.current-background.jpg"
 
 [idle]
-behavior_order = [ "lock", "screen-off", "lock-and-suspend" ]
+behavior_order = [ "screen-off", "lock", "lock-and-suspend" ]
 
     [idle.behavior.lock]
     action = "lock"
-    enabled = false
+    enabled = true
     timeout = 300.0
 
     [idle.behavior.lock-and-suspend]
     action = "lock_and_suspend"
-    enabled = false
-    timeout = 90.0
+    enabled = true
+    timeout = 900.0
 
     [idle.behavior.screen-off]
     action = "screen_off"
-    enabled = false
-    timeout = 60.0
+    enabled = true
+    timeout = 90.0
 
 [location]
 address = "Cagliari"
@@ -146,7 +146,7 @@ widget_order = [
     type = "login_box"
 
         [lockscreen_widgets.widget."lockscreen-login-box@DP-3".settings]
-        background_color = "surface_variant"
+        background_color = "surface_container"
         background_opacity = 0.88
         background_radius = 12.0
         center_password_text = false
@@ -173,7 +173,7 @@ widget_order = [
     type = "login_box"
 
         [lockscreen_widgets.widget."lockscreen-login-box@DP-4".settings]
-        background_color = "surface_variant"
+        background_color = "surface_container"
         background_opacity = 0.88
         background_radius = 12.0
         center_password_text = false
@@ -200,7 +200,7 @@ widget_order = [
     type = "login_box"
 
         [lockscreen_widgets.widget."lockscreen-login-box@DP-5".settings]
-        background_color = "surface_variant"
+        background_color = "surface_container"
         background_opacity = 0.88
         background_radius = 12.0
         center_password_text = false
@@ -227,7 +227,7 @@ widget_order = [
     type = "login_box"
 
         [lockscreen_widgets.widget."lockscreen-login-box@FALLBACK".settings]
-        background_color = "surface_variant"
+        background_color = "surface_container"
         background_opacity = 0.88
         background_radius = 12.0
         center_password_text = false
@@ -254,7 +254,7 @@ widget_order = [
     type = "login_box"
 
         [lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-5".settings]
-        background_color = "surface_variant"
+        background_color = "surface_container"
         background_opacity = 0.88
         background_radius = 12.0
         center_password_text = false
@@ -281,7 +281,7 @@ widget_order = [
     type = "login_box"
 
         [lockscreen_widgets.widget."lockscreen-login-box@eDP-1".settings]
-        background_color = "surface_variant"
+        background_color = "surface_container"
         background_opacity = 0.88
         background_radius = 12.0
         center_password_text = false
@@ -377,10 +377,10 @@ transition_duration = 300
     interval_seconds = 480
 
     [wallpaper.default]
-    path = "/home/daniele/.config/hypr/wallpapers/jap-women-sitting.jpg"
+    path = "/home/daniele/.config/hypr/wallpapers/hello-Purple-2-dragged.jpg"
 
     [wallpaper.last]
-    path = "/home/daniele/.config/hypr/wallpapers/jap-women-sitting.jpg"
+    path = "/home/daniele/.config/hypr/wallpapers/hello-Purple-2-dragged.jpg"
 
     [wallpaper.monitors.DP-3]
     path = "/home/daniele/.config/hypr/wallpapers/wwdc-2023-8k-swirls-3840x2160-12596.jpg"
@@ -389,7 +389,7 @@ transition_duration = 300
     path = "/home/daniele/.config/hypr/wallpapers/wp15376865-marathon-game-wallpapers.jpg"
 
     [wallpaper.monitors.DP-5]
-    path = "/home/daniele/.config/hypr/wallpapers/wallhaven-bleach-orehime.jpg"
+    path = "/home/daniele/.config/hypr/wallpapers/hello-Purple-2-dragged.jpg"
 
     [wallpaper.monitors.HDMI-A-5]
     path = "/home/daniele/.config/hypr/wallpapers/purple-flowers-floral-background-beautiful-blossom-garden-3840x2160-3322.jpg"
