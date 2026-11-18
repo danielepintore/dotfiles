@@ -14,3 +14,6 @@ alias podrun='podman run -v $(pwd):/chall/ --rm -it registry.fedoraproject.org/f
 
 ## pwninit alias
 alias pwninit='pwninit --template-path /home/daniele/.config/pwninit/pwninit-template.py'
+
+## run vim within uv virtual env
+alias vvim='uv run nvim'
